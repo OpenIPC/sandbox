@@ -1,15 +1,15 @@
 #!/bin/sh
 login=$(cat /etc/httpd.conf | grep cgi-bin | cut -d':' -f2)
 pass=$(cat /etc/httpd.conf | grep cgi-bin | cut -d':' -f3)
-chtime=300 #change time to check exptime, default 300 sec
-chexp=50 #change exptime threshold (40-80)
+chtime=300 #change time to check isp_again, default 300 sec
+chexp=20 #change isp_again threshold (15-30)
 day=1
 
 while true; do
 
-exp=$(curl -s http://localhost/metrics | grep ^isp_exptime | cut -d' ' -f2)
+exp=$(curl -s http://localhost/metrics | grep ^isp_again | cut -d' ' -f2)
 bri=`expr $exp / 1000`
-logger "Exposition $bri"
+logger "Analog gain $bri"
 
     if [ $bri -gt $chexp -a $day -eq 1 ] ;then
 	day=0
