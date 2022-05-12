@@ -3,6 +3,15 @@
 Протестировать вручную переключение через api http://IP/night/on и http://IP/night/off
 Положить скрипт wl_solalex.sh в /usr/sbin, дать права на исполнение chmod +x /usr/sbin/wl_solalex.sh
 Создать файл /etc/init.d/S99rc.local с содержимым:
-./usr/sbin/wl_solalex.sh > /dev/null 2>&1 &
+wl_solalex.sh > /dev/null 2>&1 &
 exit 0
 Дать права на исполнение chmod +x /etc/init.d/S99rc.local
+В файле wl_solalex.sh установить нужный интервал проверки chtime и порог переключения chexp
+
+Если есть интернет на камере, можно загрузить скрипты с github
+
+curl -o /usr/sbin/wl_solalex.sh https://raw.githubusercontent.com/OpenIPC/sandbox/main/scripts/backlight-control/wl_solalex.sh
+chmod +x /usr/sbin/wl_solalex.sh
+curl -o /etc/init.d/S99rc.local https://raw.githubusercontent.com/OpenIPC/sandbox/main/scripts/backlight-control/S99rc.local
+chmod +x /etc/init.d/S99rc.local
+
