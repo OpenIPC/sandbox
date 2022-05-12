@@ -1,4 +1,5 @@
 #!/bin/sh
+sleep 10
 login=$(cat /etc/httpd.conf | grep cgi-bin | cut -d':' -f2)
 pass=$(cat /etc/httpd.conf | grep cgi-bin | cut -d':' -f3)
 chtime=300 #change time to check isp_again, default 300 sec
