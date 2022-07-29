@@ -79,7 +79,7 @@
 		<stream_uri></stream_uri>
 	</profile>
 	<scope>onvif://www.onvif.org/Profile/Streaming</scope>
-	<scope>onvif://www.onvif.org/location/country/china</scope>
+	<scope>onvif://www.onvif.org/location/country/Italy</scope>
 	<scope>onvif://www.onvif.org/type/video_encoder</scope>
 	<scope>onvif://www.onvif.org/name/IP-Camera</scope>
 	<scope>onvif://www.onvif.org/hardware/OpenIPC</scope>
@@ -88,6 +88,7 @@
 		<simulate_enable>1</simulate_enable>
 		<simulate_interval>10</simulate_interval>
 	</event>
+
 	<ptz>
 		<enable>1</enable>
 		<node>
@@ -137,4 +138,5 @@
 			</PTZConfiguration>
 		</node>
 	</ptz>
+
 </config>
