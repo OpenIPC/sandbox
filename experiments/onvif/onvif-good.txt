@@ -1,0 +1,1288 @@
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1598
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetDeviceInformation"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">T+41JzW+l8dzVwoyH4e8cQsGbOo=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZGU2N2EyMjZkAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:02Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tds:GetDeviceInformation></tds:GetDeviceInformation>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1196
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetDeviceInformationResponse><tds:Manufacturer>OpenIPC Inc.</tds:Manufacturer><tds:Model>IP Camera</tds:Model><tds:FirmwareVersion>2022.07.29</tds:FirmwareVersion><tds:SerialNumber>123456</tds:SerialNumber><tds:HardwareId>2.0</tds:HardwareId></tds:GetDeviceInformationResponse></s:Body></s:Envelope>
+
+
+
+
+----------------
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2240
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetProfiles"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">Dhck7PnPQ5wOIDO+Ofa9GAyYGtE=</wsse:Password><wsse:Nonce>NjJlNDI3ZGU2N2E2MTVjAA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:02Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetProfiles></trt:GetProfiles></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 7980
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetProfilesResponse><trt:Profiles fixed="true" token="PROFILE_000"><tt:Name>PROFILE_000</tt:Name><tt:VideoSourceConfiguration token="V_SRC_000"><tt:Name>V_SRC_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:SourceToken>V_SRC_000</tt:SourceToken><tt:Bounds height="1944" width="2592" y="0" x="0"></tt:Bounds></tt:VideoSourceConfiguration><tt:AudioSourceConfiguration token="A_SRC_000"><tt:Name>A_SRC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:SourceToken>A_SRC_000</tt:SourceToken></tt:AudioSourceConfiguration><tt:VideoEncoderConfiguration token="V_ENC_000"><tt:Name>V_ENC_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:Encoding>H264</tt:Encoding><tt:Resolution><tt:Width>1280</tt:Width><tt:Height>720</tt:Height></tt:Resolution><tt:Quality>4</tt:Quality><tt:RateControl><tt:FrameRateLimit>25</tt:FrameRateLimit><tt:EncodingInterval>50</tt:EncodingInterval><tt:BitrateLimit>2048</tt:BitrateLimit></tt:RateControl><tt:H264><tt:GovLength>50</tt:GovLength><tt:H264Profile>Main</tt:H264Profile></tt:H264><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:VideoEncoderConfiguration><tt:AudioEncoderConfiguration token="A_ENC_000"><tt:Name>A_ENC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:Encoding>G711</tt:Encoding><tt:Bitrate>64</tt:Bitrate><tt:SampleRate>8</tt:SampleRate><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:AudioEncoderConfiguration><tt:PTZConfiguration token="PTZ_000"><tt:Name>PTZ_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:NodeToken>NODE_000</tt:NodeToken><tt:DefaultAbsolutePantTiltPositionSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:DefaultAbsolutePantTiltPositionSpace><tt:DefaultAbsoluteZoomPositionSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:DefaultAbsoluteZoomPositionSpace><tt:DefaultRelativePanTiltTranslationSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:DefaultRelativePanTiltTranslationSpace><tt:DefaultRelativeZoomTranslationSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:DefaultRelativeZoomTranslationSpace><tt:DefaultContinuousPanTiltVelocitySpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:DefaultContinuousPanTiltVelocitySpace><tt:DefaultContinuousZoomVelocitySpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:DefaultContinuousZoomVelocitySpace><tt:DefaultPTZSpeed><tt:PanTilt x="0.5" y="0.5" space="http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace" /><tt:Zoom x="0.5" space="http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace" /></tt:DefaultPTZSpeed><tt:DefaultPTZTimeout>PT5S</tt:DefaultPTZTimeout><tt:PanTiltLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:Range></tt:PanTiltLimits><tt:ZoomLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:Range></tt:ZoomLimits></tt:PTZConfiguration></trt:Profiles><trt:Profiles fixed="true" token="PROFILE_001"><tt:Name>PROFILE_001</tt:Name><tt:VideoSourceConfiguration token="V_SRC_001"><tt:Name>V_SRC_001</tt:Name><tt:UseCount>1</tt:UseCount><tt:SourceToken>V_SRC_001</tt:SourceToken><tt:Bounds height="1944" width="1944" y="0" x="0"></tt:Bounds></tt:VideoSourceConfiguration><tt:AudioSourceConfiguration token="A_SRC_000"><tt:Name>A_SRC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:SourceToken>A_SRC_000</tt:SourceToken></tt:AudioSourceConfiguration><tt:VideoEncoderConfiguration token="V_ENC_001"><tt:Name>V_ENC_001</tt:Name><tt:UseCount>1</tt:UseCount><tt:Encoding>H264</tt:Encoding><tt:Resolution><tt:Width>1920</tt:Width><tt:Height>1080</tt:Height></tt:Resolution><tt:Quality>4</tt:Quality><tt:RateControl><tt:FrameRateLimit>25</tt:FrameRateLimit><tt:EncodingInterval>50</tt:EncodingInterval><tt:BitrateLimit>2048</tt:BitrateLimit></tt:RateControl><tt:H264><tt:GovLength>50</tt:GovLength><tt:H264Profile>Main</tt:H264Profile></tt:H264><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:VideoEncoderConfiguration><tt:AudioEncoderConfiguration token="A_ENC_000"><tt:Name>A_ENC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:Encoding>G711</tt:Encoding><tt:Bitrate>64</tt:Bitrate><tt:SampleRate>8</tt:SampleRate><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:AudioEncoderConfiguration><tt:PTZConfiguration token="PTZ_000"><tt:Name>PTZ_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:NodeToken>NODE_000</tt:NodeToken><tt:DefaultAbsolutePantTiltPositionSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:DefaultAbsolutePantTiltPositionSpace><tt:DefaultAbsoluteZoomPositionSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:DefaultAbsoluteZoomPositionSpace><tt:DefaultRelativePanTiltTranslationSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:DefaultRelativePanTiltTranslationSpace><tt:DefaultRelativeZoomTranslationSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:DefaultRelativeZoomTranslationSpace><tt:DefaultContinuousPanTiltVelocitySpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:DefaultContinuousPanTiltVelocitySpace><tt:DefaultContinuousZoomVelocitySpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:DefaultContinuousZoomVelocitySpace><tt:DefaultPTZSpeed><tt:PanTilt x="0.5" y="0.5" space="http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace" /><tt:Zoom x="0.5" space="http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace" /></tt:DefaultPTZSpeed><tt:DefaultPTZTimeout>PT5S</tt:DefaultPTZTimeout><tt:PanTiltLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:Range></tt:PanTiltLimits><tt:ZoomLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:Range></tt:ZoomLimits></tt:PTZConfiguration></trt:Profiles></trt:GetProfilesResponse></s:Body></s:Envelope>
+
+-----------------------
+
+
+
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1935
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetVideoSourceConfigurationOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">YZaHU2XTxG6kBSasAQUYc1gp1nw=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2IyN2IyAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<trt:GetVideoSourceConfigurationOptions>
+			<trt:ConfigurationToken>V_SRC_000</trt:ConfigurationToken>
+		</trt:GetVideoSourceConfigurationOptions>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1413
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetVideoSourceConfigurationOptionsResponse><trt:Options><tt:BoundsRange><tt:XRange><tt:Min>0</tt:Min><tt:Max>2592</tt:Max></tt:XRange><tt:YRange><tt:Min>0</tt:Min><tt:Max>1944</tt:Max></tt:YRange><tt:WidthRange><tt:Min>320</tt:Min><tt:Max>2592</tt:Max></tt:WidthRange><tt:HeightRange><tt:Min>240</tt:Min><tt:Max>1944</tt:Max></tt:HeightRange></tt:BoundsRange><tt:VideoSourceTokensAvailable>V_SRC_000</tt:VideoSourceTokensAvailable></trt:Options></trt:GetVideoSourceConfigurationOptionsResponse></s:Body></s:Envelope>
+
+
+
+-----------------------
+
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2336
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetVideoEncoderConfigurationOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">Bq35518UzMgr/sGo4LUpv7bR3DM=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2IzNWQyAA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetVideoEncoderConfigurationOptions><trt:ProfileToken>PROFILE_000</trt:ProfileToken></trt:GetVideoEncoderConfigurationOptions></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 3523
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetVideoEncoderConfigurationOptionsResponse><trt:Options><tt:QualityRange><tt:Min>0</tt:Min><tt:Max>100</tt:Max></tt:QualityRange><tt:JPEG><tt:ResolutionsAvailable><tt:Width>1920</tt:Width><tt:Height>1280</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>1280</tt:Width><tt:Height>720</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>640</tt:Width><tt:Height>480</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>352</tt:Width><tt:Height>288</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>320</tt:Width><tt:Height>240</tt:Height></tt:ResolutionsAvailable><tt:FrameRateRange><tt:Min>1</tt:Min><tt:Max>30</tt:Max></tt:FrameRateRange><tt:EncodingIntervalRange><tt:Min>5</tt:Min><tt:Max>60</tt:Max></tt:EncodingIntervalRange></tt:JPEG><tt:MPEG4><tt:ResolutionsAvailable><tt:Width>1920</tt:Width><tt:Height>1280</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>1280</tt:Width><tt:Height>720</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>640</tt:Width><tt:Height>480</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>352</tt:Width><tt:Height>288</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>320</tt:Width><tt:Height>240</tt:Height></tt:ResolutionsAvailable><tt:GovLengthRange><tt:Min>10</tt:Min><tt:Max>60</tt:Max></tt:GovLengthRange><tt:FrameRateRange><tt:Min>1</tt:Min><tt:Max>30</tt:Max></tt:FrameRateRange><tt:EncodingIntervalRange><tt:Min>5</tt:Min><tt:Max>60</tt:Max></tt:EncodingIntervalRange><tt:Mpeg4ProfilesSupported>SP</tt:Mpeg4ProfilesSupported></tt:MPEG4><tt:H264><tt:ResolutionsAvailable><tt:Width>1920</tt:Width><tt:Height>1280</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>1280</tt:Width><tt:Height>720</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>640</tt:Width><tt:Height>480</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>352</tt:Width><tt:Height>288</tt:Height></tt:ResolutionsAvailable><tt:ResolutionsAvailable><tt:Width>320</tt:Width><tt:Height>240</tt:Height></tt:ResolutionsAvailable><tt:GovLengthRange><tt:Min>10</tt:Min><tt:Max>60</tt:Max></tt:GovLengthRange><tt:FrameRateRange><tt:Min>1</tt:Min><tt:Max>30</tt:Max></tt:FrameRateRange><tt:EncodingIntervalRange><tt:Min>5</tt:Min><tt:Max>60</tt:Max></tt:EncodingIntervalRange><tt:H264ProfilesSupported>Baseline</tt:H264ProfilesSupported><tt:H264ProfilesSupported>Main</tt:H264ProfilesSupported></tt:H264></trt:Options></trt:GetVideoEncoderConfigurationOptionsResponse></s:Body></s:Envelope>
+
+
+----------------------------
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2302
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetOSDOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">P57XHMMPYIGTPS6Gt7cDNWSRx0M=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2I0MWM0AA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetOSDOptions><trt:ConfigurationToken>V_SRC_000</trt:ConfigurationToken></trt:GetOSDOptions></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1117
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><s:Fault><s:Code><s:Value>s:Receiver</s:Value><s:Subcode><s:Value>ter:ActionNotSupported</s:Value></s:Subcode></s:Code><s:Reason><s:Text xml:lang="en">Action Not Implemented</s:Text></s:Reason></s:Fault></s:Body></s:Envelope>
+
+----------------------
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2336
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetAudioEncoderConfigurationOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">Go8tmfKWCtDpLBX8BqhT9xD2xqk=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2I1MjYzAA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetAudioEncoderConfigurationOptions><trt:ProfileToken>PROFILE_000</trt:ProfileToken></trt:GetAudioEncoderConfigurationOptions></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1903
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetAudioEncoderConfigurationOptionsResponse><trt:Options><tt:Options><tt:Encoding>G711</tt:Encoding><tt:BitrateList><tt:Items>64</tt:Items><tt:Items>80</tt:Items></tt:BitrateList><tt:SampleRateList><tt:Items>8</tt:Items><tt:Items>12</tt:Items><tt:Items>25</tt:Items><tt:Items>32</tt:Items><tt:Items>48</tt:Items></tt:SampleRateList></tt:Options><tt:Options><tt:Encoding>G726</tt:Encoding><tt:BitrateList><tt:Items>64</tt:Items><tt:Items>80</tt:Items></tt:BitrateList><tt:SampleRateList><tt:Items>8</tt:Items><tt:Items>12</tt:Items><tt:Items>25</tt:Items><tt:Items>32</tt:Items><tt:Items>48</tt:Items></tt:SampleRateList></tt:Options><tt:Options><tt:Encoding>AAC</tt:Encoding><tt:BitrateList><tt:Items>64</tt:Items><tt:Items>80</tt:Items></tt:BitrateList><tt:SampleRateList><tt:Items>8</tt:Items><tt:Items>12</tt:Items><tt:Items>25</tt:Items><tt:Items>32</tt:Items><tt:Items>48</tt:Items></tt:SampleRateList></tt:Options></trt:Options></trt:GetAudioEncoderConfigurationOptionsResponse></s:Body></s:Envelope>
+
+
+------------------------------------
+
+POST /onvif/ptz_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1833
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver20/ptz/wsdl/GetConfigurations"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">tBerzO8eahG+WKopt17XhQy1uDY=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2I2M2FmAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tptz:GetConfigurations></tptz:GetConfigurations>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2764
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tptz:GetConfigurationsResponse><tptz:PTZConfiguration token="PTZ_000"><tt:Name>PTZ_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:NodeToken>NODE_000</tt:NodeToken><tt:DefaultAbsolutePantTiltPositionSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:DefaultAbsolutePantTiltPositionSpace><tt:DefaultAbsoluteZoomPositionSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:DefaultAbsoluteZoomPositionSpace><tt:DefaultRelativePanTiltTranslationSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:DefaultRelativePanTiltTranslationSpace><tt:DefaultRelativeZoomTranslationSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:DefaultRelativeZoomTranslationSpace><tt:DefaultContinuousPanTiltVelocitySpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:DefaultContinuousPanTiltVelocitySpace><tt:DefaultContinuousZoomVelocitySpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:DefaultContinuousZoomVelocitySpace><tt:DefaultPTZSpeed><tt:PanTilt x="0.5" y="0.5" space="http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace" /><tt:Zoom x="0.5" space="http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace" /></tt:DefaultPTZSpeed><tt:DefaultPTZTimeout>PT5S</tt:DefaultPTZTimeout><tt:PanTiltLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:Range></tt:PanTiltLimits><tt:ZoomLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:Range></tt:ZoomLimits></tptz:PTZConfiguration></tptz:GetConfigurationsResponse></s:Body></s:Envelope>
+
+
+------------------------
+
+
+POST /onvif/ptz_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1910
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver20/ptz/wsdl/GetConfigurationOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">+y4/dnI2/RZfV+swavyWxbj2O+Y=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2I3MWE4AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tptz:GetConfigurationOptions>
+			<tptz:ConfigurationToken>PTZ_000</tptz:ConfigurationToken>
+		</tptz:GetConfigurationOptions>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2994
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tptz:GetConfigurationOptionsResponse><tptz:PTZConfigurationOptions><tt:Spaces><tt:AbsolutePanTiltPositionSpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:AbsolutePanTiltPositionSpace><tt:AbsoluteZoomPositionSpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:AbsoluteZoomPositionSpace><tt:RelativePanTiltTranslationSpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:RelativePanTiltTranslationSpace><tt:RelativeZoomTranslationSpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:RelativeZoomTranslationSpace><tt:ContinuousPanTiltVelocitySpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:ContinuousPanTiltVelocitySpace><tt:ContinuousZoomVelocitySpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:ContinuousZoomVelocitySpace><tt:PanTiltSpeedSpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:PanTiltSpeedSpace><tt:ZoomSpeedSpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:ZoomSpeedSpace></tt:Spaces><tt:PTZTimeout><tt:Min>PT1S</tt:Min><tt:Max>PT60S</tt:Max></tt:PTZTimeout></tptz:PTZConfigurationOptions></tptz:GetConfigurationOptionsResponse></s:Body></s:Envelope>
+
+
+---------------------------
+
+
+POST /onvif/ptz_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1861
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver20/ptz/wsdl/GetNode"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">cTkgvKBszYvphicAsqUakEyeMWs=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2I4NWY4AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tptz:GetNode>
+			<tptz:NodeToken>NODE_000</tptz:NodeToken>
+		</tptz:GetNode>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 3049
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tptz:GetNodeResponse><tptz:PTZNode token="NODE_000" FixedHomePosition="false"><tt:Name>NODE_000</tt:Name><tt:SupportedPTZSpaces><tt:AbsolutePanTiltPositionSpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:AbsolutePanTiltPositionSpace><tt:AbsoluteZoomPositionSpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:AbsoluteZoomPositionSpace><tt:RelativePanTiltTranslationSpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:RelativePanTiltTranslationSpace><tt:RelativeZoomTranslationSpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:RelativeZoomTranslationSpace><tt:ContinuousPanTiltVelocitySpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:ContinuousPanTiltVelocitySpace><tt:ContinuousZoomVelocitySpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:ContinuousZoomVelocitySpace><tt:PanTiltSpeedSpace><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:PanTiltSpeedSpace><tt:ZoomSpeedSpace><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:ZoomSpeedSpace></tt:SupportedPTZSpaces><tt:MaximumNumberOfPresets>100</tt:MaximumNumberOfPresets><tt:HomeSupported>true</tt:HomeSupported></tptz:PTZNode></tptz:GetNodeResponse></s:Body></s:Envelope>
+
+
+------------------------------
+
+
+POST /onvif/ptz_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1902
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver20/ptz/wsdl/GetConfiguration"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">BFECRcSS8wjlnzd43atQp2I2UT4=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2I5NzFkAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tptz:GetConfiguration>
+			<tptz:PTZConfigurationToken>PTZ_000</tptz:PTZConfigurationToken>
+		</tptz:GetConfiguration>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2762
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tptz:GetConfigurationResponse><tptz:PTZConfiguration token="PTZ_000"><tt:Name>PTZ_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:NodeToken>NODE_000</tt:NodeToken><tt:DefaultAbsolutePantTiltPositionSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:DefaultAbsolutePantTiltPositionSpace><tt:DefaultAbsoluteZoomPositionSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:DefaultAbsoluteZoomPositionSpace><tt:DefaultRelativePanTiltTranslationSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:DefaultRelativePanTiltTranslationSpace><tt:DefaultRelativeZoomTranslationSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:DefaultRelativeZoomTranslationSpace><tt:DefaultContinuousPanTiltVelocitySpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:DefaultContinuousPanTiltVelocitySpace><tt:DefaultContinuousZoomVelocitySpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:DefaultContinuousZoomVelocitySpace><tt:DefaultPTZSpeed><tt:PanTilt x="0.5" y="0.5" space="http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace" /><tt:Zoom x="0.5" space="http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace" /></tt:DefaultPTZSpeed><tt:DefaultPTZTimeout>PT5S</tt:DefaultPTZTimeout><tt:PanTiltLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:Range></tt:PanTiltLimits><tt:ZoomLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:Range></tt:ZoomLimits></tptz:PTZConfiguration></tptz:GetConfigurationResponse></s:Body></s:Envelope>
+
+
+-----------------------------------------------
+
+
+POST /onvif/ptz_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1896
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver20/ptz/wsdl/GetPresetTourOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">eF3eRz48KELRhUgRj+BzBgWOb8c=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2JhMDUxAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tptz:GetPresetTourOptions>
+			<tptz:ProfileToken>PROFILE_000</tptz:ProfileToken>
+		</tptz:GetPresetTourOptions>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1117
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><s:Fault><s:Code><s:Value>s:Receiver</s:Value><s:Subcode><s:Value>ter:ActionNotSupported</s:Value></s:Subcode></s:Code><s:Reason><s:Text xml:lang="en">Action Not Implemented</s:Text></s:Reason></s:Fault></s:Body></s:Envelope>
+
+
+--------------
+
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1885
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetSnapshotUri"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">Ow8XgmapoCVVGN9Vwje6nE7me/M=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2JiNTg2AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<trt:GetSnapshotUri>
+			<trt:ProfileToken>PROFILE_000</trt:ProfileToken>
+		</trt:GetSnapshotUri>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+/£NFE¹*à 
+EL.î@@íÀ¨À¨e@´ò³ÂèB²|P 3Ø@HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1186
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetSnapshotUriResponse><trt:MediaUri><tt:Uri>http://192.168.1.27:8000/image.jpg</tt:Uri><tt:InvalidAfterConnect>false</tt:InvalidAfterConnect><tt:InvalidAfterReboot>false</tt:InvalidAfterReboot><tt:Timeout>PT5S</tt:Timeout></trt:MediaUri></trt:GetSnapshotUriResponse></s:Body></s:Envelope>
+
+
+-----------------------
+
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1598
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetNetworkInterfaces"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">tr8HyqA48Xb/VJEiBJUvPeXBMRw=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2JjMDU1AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tds:GetNetworkInterfaces></tds:GetNetworkInterfaces>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+/£NFE¹*à 
+EÎ@@âÀ¨À¨e@¶'¹S¹ïgZOP "ÊHTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1373
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetNetworkInterfacesResponse><tds:NetworkInterfaces token="eth0"><tt:Enabled>true</tt:Enabled><tt:Info><tt:Name>eth0</tt:Name><tt:HwAddress>46:0B:45:B9:2A:E0</tt:HwAddress><tt:MTU>4163</tt:MTU></tt:Info><tt:IPv4><tt:Enabled>true</tt:Enabled><tt:Config><tt:Manual><tt:Address>192.168.1.27</tt:Address><tt:PrefixLength>24</tt:PrefixLength></tt:Manual><tt:DHCP>false</tt:DHCP></tt:Config></tt:IPv4></tds:NetworkInterfaces></tds:GetNetworkInterfacesResponse></s:Body></s:Envelope>
+
+
+--------------------------
+
+
+
+POST /onvif/ptz_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1876
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver20/ptz/wsdl/GetPresets"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">7DTfhXn55woQXeO8hRT0ezx/nK8=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2JkM2VmAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tptz:GetPresets>
+			<tptz:ProfileToken>PROFILE_000</tptz:ProfileToken>
+		</tptz:GetPresets>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 965
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tptz:GetPresetsResponse></tptz:GetPresetsResponse></s:Body></s:Envelope>
+
+
+-----------------------------
+
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1588
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetRelayOutputs"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">IPyxVUXjUAcoIUk8TWwMTvS1MO8=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2JlN2Y0AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tds:GetRelayOutputs></tds:GetRelayOutputs>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1117
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><s:Fault><s:Code><s:Value>s:Receiver</s:Value><s:Subcode><s:Value>ter:ActionNotSupported</s:Value></s:Subcode></s:Code><s:Reason><s:Text xml:lang="en">Action Not Implemented</s:Text></s:Reason></s:Fault></s:Body></s:Envelope>
+
+
+----------------------
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2258
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetNetworkInterfaces"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">SF8FzWF4X1lzzyII7Iqs1t1EkWg=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2JmMWRjAA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><tds:GetNetworkInterfaces></tds:GetNetworkInterfaces></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1373
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetNetworkInterfacesResponse><tds:NetworkInterfaces token="eth0"><tt:Enabled>true</tt:Enabled><tt:Info><tt:Name>eth0</tt:Name><tt:HwAddress>46:0B:45:B9:2A:E0</tt:HwAddress><tt:MTU>4163</tt:MTU></tt:Info><tt:IPv4><tt:Enabled>true</tt:Enabled><tt:Config><tt:Manual><tt:Address>192.168.1.27</tt:Address><tt:PrefixLength>24</tt:PrefixLength></tt:Manual><tt:DHCP>false</tt:DHCP></tt:Config></tt:IPv4></tds:NetworkInterfaces></tds:GetNetworkInterfacesResponse></s:Body></s:Envelope>
+
+
+----------------
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2266
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetNetworkDefaultGateway"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">QgQVVF/84lOSc2G+8gQxURsh3CI=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2MwNmU1AA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><tds:GetNetworkDefaultGateway></tds:GetNetworkDefaultGateway></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1076
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetNetworkDefaultGatewayResponse><tds:NetworkGateway><tt:IPv4Address>192.168.1.1</tt:IPv4Address></tds:NetworkGateway></tds:GetNetworkDefaultGatewayResponse></s:Body></s:Envelope>
+----
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2290
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetOSDs"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">C1ALVagYx31jQK/BQvwhuhUmASA=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2MxMzUyAA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetOSDs><trt:ConfigurationToken>V_SRC_000</trt:ConfigurationToken></trt:GetOSDs></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1117
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><s:Fault><s:Code><s:Value>s:Receiver</s:Value><s:Subcode><s:Value>ter:ActionNotSupported</s:Value></s:Subcode></s:Code><s:Reason><s:Text xml:lang="en">Action Not Implemented</s:Text></s:Reason></s:Fault></s:Body></s:Envelope>
+
+---------------
+POST /onvif/image_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2004
+Connection: close
+SOAPAction: "http://www.onvif.org/ver20/imaging/wsdl/GetImagingSettings"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">UeiSDM/tBIA+92WhSq0ud2IZdUc=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2MyMzM4AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<timg:GetImagingSettings>
+			<timg:VideoSourceToken>V_SRC_000</timg:VideoSourceToken>
+		</timg:GetImagingSettings>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1613
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><timg:GetImagingSettingsResponse><timg:ImagingSettings><tt:BacklightCompensation><tt:Mode>OFF</tt:Mode></tt:BacklightCompensation><tt:Brightness>50</tt:Brightness><tt:ColorSaturation>50</tt:ColorSaturation><tt:Contrast>50</tt:Contrast><tt:Exposure><tt:Mode>AUTO</tt:Mode><tt:MinExposureTime>10</tt:MinExposureTime><tt:MaxExposureTime>40000</tt:MaxExposureTime><tt:MinGain>0</tt:MinGain><tt:MaxGain>100</tt:MaxGain></tt:Exposure><tt:IrCutFilter>AUTO</tt:IrCutFilter><tt:Sharpness>50</tt:Sharpness><tt:WideDynamicRange><tt:Mode>OFF</tt:Mode><tt:Level>50</tt:Level></tt:WideDynamicRange><tt:WhiteBalance><tt:Mode>AUTO</tt:Mode></tt:WhiteBalance></timg:ImagingSettings></timg:GetImagingSettingsResponse></s:Body></s:Envelope>
+
+
+--------
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1921
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetVideoSourceConfiguration"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">kBsXxOy/i9QWdzPLdUgJdk+oEd8=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTk2N2MzNGUwAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<trt:GetVideoSourceConfiguration>
+			<trt:ConfigurationToken>V_SRC_000</trt:ConfigurationToken>
+		</trt:GetVideoSourceConfiguration>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+/£NFE¹*à 
+Eh²f@@ÿXÀ¨À¨e@Ä=/W#Øã²P E&ÆHTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1214
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetVideoSourceConfigurationResponse><trt:Configuration token="V_SRC_000"><tt:Name>V_SRC_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:SourceToken>V_SRC_000</tt:SourceToken><tt:Bounds height="1944" width="2592" y="0" x="0"></tt:Bounds></trt:Configuration></trt:GetVideoSourceConfigurationResponse></s:Body></s:Envelope>
+
+------------
+
+PUT /LAPI/V1.0/Channels/5/Smart/AllDetection/LinkageActions HTTP/1.1
+Host: 192.168.1.27:8000
+Accept: */*
+Content-Length: 48
+Content-Type: application/x-www-form-urlencoded
+
+{
+	"Num":	1,
+	"Actions":	[{
+			"ActID":	6
+		}]
+}
+
+-------------
+PUT /LAPI/V1.0/Channels/0/System/PhotoServer HTTP/1.1
+Host: 192.168.1.27:8000
+Accept: */*
+Content-Length: 123
+Content-Type: application/x-www-form-urlencoded
+
+{
+	"ServerAddr":	{
+		"Port":	5196,
+		"Address":	"0.0.0.0"
+	},
+	"Protocol":	1,
+	"CamaraID":	"2.0",
+	"TollgateID":	"Chanl5"
+}
+
+
+
+-------------
+
+
+POST /onvif/event_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2562
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver10/events/wsdl/GetEventProperties"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:ns5="http://docs.oasis-open.org/wsrf/bf-2" xmlns:ns8="http://docs.oasis-open.org/wsn/t-1" xmlns:ns9="http://www.onvif.org/ver10/schema" xmlns:ns10="http://www.w3.org/2005/05/xmlmime" xmlns:ns4="http://docs.oasis-open.org/wsrf/r-2" xmlns:ns11="http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding" xmlns:ns12="http://www.onvif.org/ver10/events/wsdl/EventBinding" xmlns:ns1="http://www.onvif.org/ver10/events/wsdl" xmlns:ns13="http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding" xmlns:ns14="http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding" xmlns:ns15="http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding" xmlns:ns16="http://www.onvif.org/ver10/events/wsdl/PullPointBinding" xmlns:ns17="http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding" xmlns:ns18="http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding" xmlns:ns7="http://docs.oasis-open.org/wsn/b-2">
+	<SOAP-ENV:Header>
+		<wsse:Security>
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">3GKgTq5AUJ7PMnus96f4dBwY4Jg=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTlmNmY5NDhjAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+		<wsa:MessageID>urn:uuid:7d75ebd2-2000-4c30-a7c1-70f042cef82c</wsa:MessageID>
+		<wsa:ReplyTo>
+			<wsa:Address>http://www.w3.org/2005/08/addressing/anonymous</wsa:Address>
+		</wsa:ReplyTo>
+		<wsa:Action>http://www.onvif.org/ver10/events/wsdl/EventPortType/GetEventPropertiesRequest</wsa:Action>
+		<wsa5:To SOAP-ENV:mustUnderstand="true">http://192.168.1.27:8000/onvif/event_service</wsa5:To>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<ns1:GetEventProperties></ns1:GetEventProperties>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2420
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Header><wsa:Action>http://www.onvif.org/ver10/events/wsdl/EventPortType/GetEventPropertiesResponse</wsa:Action></s:Header><s:Body><tev:GetEventPropertiesResponse><tev:TopicNamespaceLocation>http://www.onvif.org/onvif/ver10/topics/topicns.xml</tev:TopicNamespaceLocation><wsnt:FixedTopicSet>true</wsnt:FixedTopicSet><wstop:TopicSet xmlns=""><tns1:RuleEngine><CellMotionDetector><Motion wstop:topic="true"><tt:MessageDescription IsProperty="true"><tt:Source><tt:SimpleItemDescription Name="VideoSourceConfigurationToken" Type="tt:ReferenceToken"/><tt:SimpleItemDescription Name="VideoAnalyticsConfigurationToken" Type="tt:ReferenceToken"/><tt:SimpleItemDescription Name="Rule" Type="xs:string"/></tt:Source><tt:Data><tt:SimpleItemDescription Name="IsMotion" Type="xs:boolean"/></tt:Data></tt:MessageDescription></Motion></CellMotionDetector></tns1:RuleEngine></wstop:TopicSet><wsnt:TopicExpressionDialect>http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</wsnt:TopicExpressionDialect><wsnt:TopicExpressionDialect>http://docs.oasis-open.org/wsnt/t-1/TopicExpression/ConcreteSet</wsnt:TopicExpressionDialect><wsnt:TopicExpressionDialect>http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</wsnt:TopicExpressionDialect><tev:MessageContentFilterDialect>http://www.onvif.org/ver10/tev/messageContentFilter/ItemFilter</tev:MessageContentFilterDialect><tev:MessageContentSchemaLocation>http://www.onvif.org/onvif/ver10/schema/onvif.xsd</tev:MessageContentSchemaLocation></tev:GetEventPropertiesResponse></s:Body></s:Envelope>
+
+-----------------
+
+
+PUT /LAPI/V1.0/Channels/0/Smart/FaceEnable HTTP/1.1
+Host: 192.168.1.27:8000
+Accept: */*
+Content-Length: 17
+Content-Type: application/x-www-form-urlencoded
+
+{
+	"Enabled":	0
+}
+
+
+---------
+POST /onvif/event_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2742
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver10/events/wsdl/Subscribe"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:ns5="http://docs.oasis-open.org/wsrf/bf-2" xmlns:ns8="http://docs.oasis-open.org/wsn/t-1" xmlns:ns9="http://www.onvif.org/ver10/schema" xmlns:ns10="http://www.w3.org/2005/05/xmlmime" xmlns:ns4="http://docs.oasis-open.org/wsrf/r-2" xmlns:ns11="http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding" xmlns:ns12="http://www.onvif.org/ver10/events/wsdl/EventBinding" xmlns:ns1="http://www.onvif.org/ver10/events/wsdl" xmlns:ns13="http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding" xmlns:ns14="http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding" xmlns:ns15="http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding" xmlns:ns16="http://www.onvif.org/ver10/events/wsdl/PullPointBinding" xmlns:ns17="http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding" xmlns:ns18="http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding" xmlns:ns7="http://docs.oasis-open.org/wsn/b-2">
+	<SOAP-ENV:Header>
+		<wsse:Security>
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">tiPBQ60tW6SAg6VMIVl0yobBmm8=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZTlmNmZhNGI2AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:13Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+		<wsa:MessageID>urn:uuid:7d75ebd2-2000-4c30-a7c1-70f042cef82c</wsa:MessageID>
+		<wsa:ReplyTo>
+			<wsa:Address>http://www.w3.org/2005/08/addressing/anonymous</wsa:Address>
+		</wsa:ReplyTo>
+		<wsa:Action>http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/SubscribeRequest</wsa:Action>
+		<wsa5:To SOAP-ENV:mustUnderstand="true">http://192.168.1.27:8000/onvif/event_service</wsa5:To>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<ns7:Subscribe>
+			<ns7:ConsumerReference>
+				<wsa5:Address>http://192.168.1.101:20004/onvif_notify_server</wsa5:Address>
+			</ns7:ConsumerReference>
+			<ns7:InitialTerminationTime>PT1M</ns7:InitialTerminationTime>
+		</ns7:Subscribe>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1329
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Header><wsa:Action>http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/SubscribeResponse</wsa:Action></s:Header><s:Body><wsnt:SubscribeResponse><wsnt:SubscriptionReference><wsa:Address>http://192.168.1.27:8000/event_service/0</wsa:Address></wsnt:SubscriptionReference><wsnt:CurrentTime>2022-07-29T18:33:13Z</wsnt:CurrentTime><wsnt:TerminationTime>2022-07-29T18:34:13Z</wsnt:TerminationTime></wsnt:SubscribeResponse></s:Body></s:Envelope>
+
+
+---------------
+GET /LAPI/V1.0/Channels/0/Smart/AllDetection/Rule HTTP/1.1
+Host: 192.168.1.27:8000
+Accept: */*
+
+
+
+----
+GET /LAPI/V1.0/Channels/1/Smart/Capabilities HTTP/1.1
+Host: 192.168.1.27:8000
+Accept: */*
+
+
+
+---------
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2258
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetNetworkInterfaces"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">9QBY0nde3krT4mBAzG3QYsXl/rI=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2M0NTI5AA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><tds:GetNetworkInterfaces></tds:GetNetworkInterfaces></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1373
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetNetworkInterfacesResponse><tds:NetworkInterfaces token="eth0"><tt:Enabled>true</tt:Enabled><tt:Info><tt:Name>eth0</tt:Name><tt:HwAddress>46:0B:45:B9:2A:E0</tt:HwAddress><tt:MTU>4163</tt:MTU></tt:Info><tt:IPv4><tt:Enabled>true</tt:Enabled><tt:Config><tt:Manual><tt:Address>192.168.1.27</tt:Address><tt:PrefixLength>24</tt:PrefixLength></tt:Manual><tt:DHCP>false</tt:DHCP></tt:Config></tt:IPv4></tds:NetworkInterfaces></tds:GetNetworkInterfacesResponse></s:Body></s:Envelope>
+
+
+---
+
+GET /LAPI/V1.0/System/Capabilities HTTP/1.1
+Host: 192.168.1.27:8000
+Accept: */*
+
+---------------
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2266
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetNetworkDefaultGateway"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">AAVK2qu5vTbEqWQQ0oLf5hISrfI=</wsse:Password><wsse:Nonce>NjJlNDI3ZTk2N2M1MjA3AA==</wsse:Nonce><wsu:Created>2022-07-29T18:33:13Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><tds:GetNetworkDefaultGateway></tds:GetNetworkDefaultGateway></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1076
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetNetworkDefaultGatewayResponse><tds:NetworkGateway><tt:IPv4Address>192.168.1.1</tt:IPv4Address></tds:NetworkGateway></tds:GetNetworkDefaultGatewayResponse></s:Body></s:Envelope>
+
+-----------------
+
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1598
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetDeviceInformation"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">hqqwYoeOmMhicmDNn1MOIvADigA=</wsse:Password>
+				<wsse:Nonce>NjJlNDI3ZWI2N2M4MGU0AA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:33:15Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tds:GetDeviceInformation></tds:GetDeviceInformation>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1196
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetDeviceInformationResponse><tds:Manufacturer>OpenIPC Inc.</tds:Manufacturer><tds:Model>IP Camera</tds:Model><tds:FirmwareVersion>2022.07.29</tds:FirmwareVersion><tds:SerialNumber>123456</tds:SerialNumber><tds:HardwareId>2.0</tds:HardwareId></tds:GetDeviceInformationResponse></s:Body></s:Envelope>
+----
+
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1825
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetSystemDateAndTime"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Body><tds:GetSystemDateAndTime></tds:GetSystemDateAndTime></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+
+
+
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1372
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetSystemDateAndTimeResponse><tds:SystemDateAndTime><tt:DateTimeType>Manual</tt:DateTimeType><tt:DaylightSavings>false</tt:DaylightSavings><tt:TimeZone><tt:TZ>PST3PDT</tt:TZ></tt:TimeZone><tt:UTCDateTime><tt:Time><tt:Hour>18</tt:Hour><tt:Minute>34</tt:Minute><tt:Second>22</tt:Second></tt:Time><tt:Date><tt:Year>2022</tt:Year><tt:Month>7</tt:Month><tt:Day>29</tt:Day></tt:Date></tt:UTCDateTime></tds:SystemDateAndTime></tds:GetSystemDateAndTimeResponse></s:Body></s:Envelope>
+
+
+---------
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2606
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/SetSystemDateAndTime"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">T9E0d6gsFYf0GWKVRLtN25CVUvw=</wsse:Password><wsse:Nonce>NjJlNDI4MmU2N2Y3NGZmAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:22Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><tds:SetSystemDateAndTime><tds:DateTimeType>Manual</tds:DateTimeType><tds:DaylightSavings>false</tds:DaylightSavings><tds:TimeZone><tt:TZ>AST-3</tt:TZ></tds:TimeZone><tds:UTCDateTime><tt:Time><tt:Hour>18</tt:Hour><tt:Minute>34</tt:Minute><tt:Second>22</tt:Second></tt:Time><tt:Date><tt:Year>2022</tt:Year><tt:Month>7</tt:Month><tt:Day>29</tt:Day></tt:Date></tds:UTCDateTime></tds:SetSystemDateAndTime></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 983
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:SetSystemDateAndTimeResponse></tds:SetSystemDateAndTimeResponse></s:Body></s:Envelope>
+
+
+
+
+---
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2292
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetServices"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">Ykh/F/wsuTZaVPBMIRHSN78zLKU=</wsse:Password><wsse:Nonce>NjJlNDI4MmU2N2ZhMjVlAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:22Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><tds:GetServices><tds:IncludeCapability>false</tds:IncludeCapability></tds:GetServices></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2136
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetServicesResponse><tds:Service><tds:Namespace>http://www.onvif.org/ver10/device/wsdl</tds:Namespace><tds:XAddr>http://192.168.1.27:8000/onvif/device_service</tds:XAddr><tds:Version><tt:Major>2</tt:Major><tt:Minor>42</tt:Minor></tds:Version></tds:Service><tds:Service><tds:Namespace>http://www.onvif.org/ver10/media/wsdl</tds:Namespace><tds:XAddr>http://192.168.1.27:8000/onvif/media_service</tds:XAddr><tds:Version><tt:Major>2</tt:Major><tt:Minor>42</tt:Minor></tds:Version></tds:Service><tds:Service><tds:Namespace>http://www.onvif.org/ver10/events/wsdl</tds:Namespace><tds:XAddr>http://192.168.1.27:8000/onvif/event_service</tds:XAddr><tds:Version><tt:Major>2</tt:Major><tt:Minor>42</tt:Minor></tds:Version></tds:Service><tds:Service><tds:Namespace>http://www.onvif.org/ver20/ptz/wsdl</tds:Namespace><tds:XAddr>http://192.168.1.27:8000/onvif/ptz_service</tds:XAddr><tds:Version><tt:Major>2</tt:Major><tt:Minor>42</tt:Minor></tds:Version></tds:Service><tds:Service><tds:Namespace>http://www.onvif.org/ver20/imaging/wsdl</tds:Namespace><tds:XAddr>http://192.168.1.27:8000/onvif/image_service</tds:XAddr><tds:Version><tt:Major>2</tt:Major><tt:Minor>42</tt:Minor></tds:Version></tds:Service></tds:GetServicesResponse></s:Body></s:Envelope>
+
+
+-----
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1627
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetCapabilities"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">L/6n5bzjDGDjPy+o6v9PqSZiMQI=</wsse:Password>
+				<wsse:Nonce>NjJlNDI4MmU2N2Y5N2EzAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:34:22Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tds:GetCapabilities>
+			<tds:Category>All</tds:Category>
+		</tds:GetCapabilities>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 3210
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tds:GetCapabilitiesResponse><tds:Capabilities><tt:Device><tt:XAddr>http://192.168.1.27:8000/onvif/device_service</tt:XAddr><tt:Network><tt:IPFilter>false</tt:IPFilter><tt:ZeroConfiguration>false</tt:ZeroConfiguration><tt:IPVersion6>false</tt:IPVersion6><tt:DynDNS>false</tt:DynDNS></tt:Network><tt:System><tt:DiscoveryResolve>true</tt:DiscoveryResolve><tt:DiscoveryBye>false</tt:DiscoveryBye><tt:RemoteDiscovery>false</tt:RemoteDiscovery><tt:SystemBackup>true</tt:SystemBackup><tt:SystemLogging>true</tt:SystemLogging><tt:FirmwareUpgrade>true</tt:FirmwareUpgrade><tt:SupportedVersions><tt:Major>2</tt:Major><tt:Minor>42</tt:Minor></tt:SupportedVersions><tt:SupportedVersions><tt:Major>2</tt:Major><tt:Minor>20</tt:Minor></tt:SupportedVersions><tt:SupportedVersions><tt:Major>2</tt:Major><tt:Minor>10</tt:Minor></tt:SupportedVersions><tt:SupportedVersions><tt:Major>2</tt:Major><tt:Minor>0</tt:Minor></tt:SupportedVersions></tt:System><tt:IO><tt:InputConnectors>0</tt:InputConnectors><tt:RelayOutputs>0</tt:RelayOutputs></tt:IO><tt:Security><tt:TLS1.1>false</tt:TLS1.1><tt:TLS1.2>false</tt:TLS1.2><tt:OnboardKeyGeneration>false</tt:OnboardKeyGeneration><tt:AccessPolicyConfig>false</tt:AccessPolicyConfig><tt:X.509Token>false</tt:X.509Token><tt:SAMLToken>false</tt:SAMLToken><tt:KerberosToken>false</tt:KerberosToken><tt:RELToken>false</tt:RELToken></tt:Security></tt:Device><tt:Events><tt:XAddr>http://192.168.1.27:8000/onvif/event_services</tt:XAddr><tt:WSSubscriptionPolicySupport>false</tt:WSSubscriptionPolicySupport><tt:WSPullPointSupport>false</tt:WSPullPointSupport><tt:WSPausableSubscriptionManagerInterfaceSupport>false</tt:WSPausableSubscriptionManagerInterfaceSupport></tt:Events><tt:Imaging><tt:XAddr>http://192.168.1.27:8000/onvif/image_services</tt:XAddr></tt:Imaging><tt:Media><tt:XAddr>http://192.168.1.27:8000/onvif/media_service</tt:XAddr><tt:StreamingCapabilities><tt:RTPMulticast>true</tt:RTPMulticast><tt:RTP_TCP>true</tt:RTP_TCP><tt:RTP_RTSP_TCP>true</tt:RTP_RTSP_TCP></tt:StreamingCapabilities><tt:Extension><tt:ProfileCapabilities><tt:MaximumNumberOfProfiles>10</tt:MaximumNumberOfProfiles></tt:ProfileCapabilities></tt:Extension></tt:Media><tt:PTZ><tt:XAddr>http://192.168.1.27:8000/onvif/ptz_services</tt:XAddr></tt:PTZ></tds:Capabilities></tds:GetCapabilitiesResponse></s:Body></s:Envelope>
+
+
+-----
+
+POST /onvif/device_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2292
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/device/wsdl/GetServices"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">Ykh/F/wsuTZaVPBMIRHSN78zLKU=</wsse:Password><wsse:Nonce>NjJlNDI4MmU2N2ZhMjVlAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:22Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><tds:GetServices><tds:IncludeCapability>false</tds:IncludeCapability></tds:GetServices></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+----------
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2248
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetVideoSources"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">fsXRywluTi4AjlBGW705qx3DO4c=</wsse:Password><wsse:Nonce>NjJlNDI4MmU2N2ZiNDQzAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:22Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetVideoSources></trt:GetVideoSources></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1311
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetVideoSourcesResponse><trt:VideoSources token="V_SRC_000"><tt:Framerate>25</tt:Framerate><tt:Resolution><tt:Width>2592</tt:Width><tt:Height>1944</tt:Height></tt:Resolution></trt:VideoSources><trt:VideoSources token="V_SRC_001"><tt:Framerate>25</tt:Framerate><tt:Resolution><tt:Width>1944</tt:Width><tt:Height>1944</tt:Height></tt:Resolution></trt:VideoSources></trt:GetVideoSourcesResponse></s:Body></s:Envelope>
+
+
+
+-------------
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2240
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetProfiles"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">ODDvu9N9biVp4zp+EIB0e14flDo=</wsse:Password><wsse:Nonce>NjJlNDI4MmU2N2ZjMDUzAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:22Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetProfiles></trt:GetProfiles></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 7980
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetProfilesResponse><trt:Profiles fixed="true" token="PROFILE_000"><tt:Name>PROFILE_000</tt:Name><tt:VideoSourceConfiguration token="V_SRC_000"><tt:Name>V_SRC_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:SourceToken>V_SRC_000</tt:SourceToken><tt:Bounds height="1944" width="2592" y="0" x="0"></tt:Bounds></tt:VideoSourceConfiguration><tt:AudioSourceConfiguration token="A_SRC_000"><tt:Name>A_SRC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:SourceToken>A_SRC_000</tt:SourceToken></tt:AudioSourceConfiguration><tt:VideoEncoderConfiguration token="V_ENC_000"><tt:Name>V_ENC_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:Encoding>H264</tt:Encoding><tt:Resolution><tt:Width>1280</tt:Width><tt:Height>720</tt:Height></tt:Resolution><tt:Quality>4</tt:Quality><tt:RateControl><tt:FrameRateLimit>25</tt:FrameRateLimit><tt:EncodingInterval>50</tt:EncodingInterval><tt:BitrateLimit>2048</tt:BitrateLimit></tt:RateControl><tt:H264><tt:GovLength>50</tt:GovLength><tt:H264Profile>Main</tt:H264Profile></tt:H264><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:VideoEncoderConfiguration><tt:AudioEncoderConfiguration token="A_ENC_000"><tt:Name>A_ENC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:Encoding>G711</tt:Encoding><tt:Bitrate>64</tt:Bitrate><tt:SampleRate>8</tt:SampleRate><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:AudioEncoderConfiguration><tt:PTZConfiguration token="PTZ_000"><tt:Name>PTZ_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:NodeToken>NODE_000</tt:NodeToken><tt:DefaultAbsolutePantTiltPositionSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:DefaultAbsolutePantTiltPositionSpace><tt:DefaultAbsoluteZoomPositionSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:DefaultAbsoluteZoomPositionSpace><tt:DefaultRelativePanTiltTranslationSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:DefaultRelativePanTiltTranslationSpace><tt:DefaultRelativeZoomTranslationSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:DefaultRelativeZoomTranslationSpace><tt:DefaultContinuousPanTiltVelocitySpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:DefaultContinuousPanTiltVelocitySpace><tt:DefaultContinuousZoomVelocitySpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:DefaultContinuousZoomVelocitySpace><tt:DefaultPTZSpeed><tt:PanTilt x="0.5" y="0.5" space="http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace" /><tt:Zoom x="0.5" space="http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace" /></tt:DefaultPTZSpeed><tt:DefaultPTZTimeout>PT5S</tt:DefaultPTZTimeout><tt:PanTiltLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:Range></tt:PanTiltLimits><tt:ZoomLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:Range></tt:ZoomLimits></tt:PTZConfiguration></trt:Profiles><trt:Profiles fixed="true" token="PROFILE_001"><tt:Name>PROFILE_001</tt:Name><tt:VideoSourceConfiguration token="V_SRC_001"><tt:Name>V_SRC_001</tt:Name><tt:UseCount>1</tt:UseCount><tt:SourceToken>V_SRC_001</tt:SourceToken><tt:Bounds height="1944" width="1944" y="0" x="0"></tt:Bounds></tt:VideoSourceConfiguration><tt:AudioSourceConfiguration token="A_SRC_000"><tt:Name>A_SRC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:SourceToken>A_SRC_000</tt:SourceToken></tt:AudioSourceConfiguration><tt:VideoEncoderConfiguration token="V_ENC_001"><tt:Name>V_ENC_001</tt:Name><tt:UseCount>1</tt:UseCount><tt:Encoding>H264</tt:Encoding><tt:Resolution><tt:Width>1920</tt:Width><tt:Height>1080</tt:Height></tt:Resolution><tt:Quality>4</tt:Quality><tt:RateControl><tt:FrameRateLimit>25</tt:FrameRateLimit><tt:EncodingInterval>50</tt:EncodingInterval><tt:BitrateLimit>2048</tt:BitrateLimit></tt:RateControl><tt:H264><tt:GovLength>50</tt:GovLength><tt:H264Profile>Main</tt:H264Profile></tt:H264><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:VideoEncoderConfiguration><tt:AudioEncoderConfiguration token="A_ENC_000"><tt:Name>A_ENC_000</tt:Name><tt:UseCount>2</tt:UseCount><tt:Encoding>G711</tt:Encoding><tt:Bitrate>64</tt:Bitrate><tt:SampleRate>8</tt:SampleRate><tt:Multicast><tt:Address><tt:Type>IPv4</tt:Type><tt:IPv4Address>239.0.1.0</tt:IPv4Address></tt:Address><tt:Port>4000</tt:Port><tt:TTL>64</tt:TTL><tt:AutoStart>false</tt:AutoStart></tt:Multicast><tt:SessionTimeout>PT10S</tt:SessionTimeout></tt:AudioEncoderConfiguration><tt:PTZConfiguration token="PTZ_000"><tt:Name>PTZ_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:NodeToken>NODE_000</tt:NodeToken><tt:DefaultAbsolutePantTiltPositionSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:DefaultAbsolutePantTiltPositionSpace><tt:DefaultAbsoluteZoomPositionSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:DefaultAbsoluteZoomPositionSpace><tt:DefaultRelativePanTiltTranslationSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:DefaultRelativePanTiltTranslationSpace><tt:DefaultRelativeZoomTranslationSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:DefaultRelativeZoomTranslationSpace><tt:DefaultContinuousPanTiltVelocitySpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:DefaultContinuousPanTiltVelocitySpace><tt:DefaultContinuousZoomVelocitySpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:DefaultContinuousZoomVelocitySpace><tt:DefaultPTZSpeed><tt:PanTilt x="0.5" y="0.5" space="http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace" /><tt:Zoom x="0.5" space="http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace" /></tt:DefaultPTZSpeed><tt:DefaultPTZTimeout>PT5S</tt:DefaultPTZTimeout><tt:PanTiltLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:Range></tt:PanTiltLimits><tt:ZoomLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:Range></tt:ZoomLimits></tt:PTZConfiguration></trt:Profiles></trt:GetProfilesResponse></s:Body></s:Envelope>
+
+
+
+------
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2418
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetStreamUri"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">2U72WMkw4MVileCf/FBCZzjWV70=</wsse:Password><wsse:Nonce>NjJlNDI4MmU2N2ZkNzRhAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:22Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetStreamUri><trt:StreamSetup><tt:Stream>RTP-Unicast</tt:Stream><tt:Transport><tt:Protocol>UDP</tt:Protocol></tt:Transport></trt:StreamSetup><trt:ProfileToken>PROFILE_000</trt:ProfileToken></trt:GetStreamUri></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1177
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetStreamUriResponse><trt:MediaUri><tt:Uri>rtsp://192.168.1.27/stream=0</tt:Uri><tt:InvalidAfterConnect>false</tt:InvalidAfterConnect><tt:InvalidAfterReboot>false</tt:InvalidAfterReboot><tt:Timeout>PT60S</tt:Timeout></trt:MediaUri></trt:GetStreamUriResponse></s:Body></s:Envelope>
+
+---
+
+
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2419
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetStreamUri"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">1dEUWl70t3rLiJCQezEVHDf3NDg=</wsse:Password><wsse:Nonce>NjJlNDI4MmU2N2ZlNzZiAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:22Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetStreamUri><trt:StreamSetup><tt:Stream>RTP-Unicast</tt:Stream><tt:Transport><tt:Protocol>RTSP</tt:Protocol></tt:Transport></trt:StreamSetup><trt:ProfileToken>PROFILE_000</trt:ProfileToken></trt:GetStreamUri></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1177
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetStreamUriResponse><trt:MediaUri><tt:Uri>rtsp://192.168.1.27/stream=0</tt:Uri><tt:InvalidAfterConnect>false</tt:InvalidAfterConnect><tt:InvalidAfterReboot>false</tt:InvalidAfterReboot><tt:Timeout>PT60S</tt:Timeout></trt:MediaUri></trt:GetStreamUriResponse></s:Body></s:Envelope>
+
+----
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2312
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/SetSynchronizationPoint"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">qMl6DWcx8HH+ObMw5pSCyY52oos=</wsse:Password><wsse:Nonce>NjJlNDI4MmY2N2ZmNzBhAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:23Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:SetSynchronizationPoint><trt:ProfileToken>PROFILE_000</trt:ProfileToken></trt:SetSynchronizationPoint></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1127
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Header><wsa:Action>http://www.onvif.org/ver10/events/wsdl/PullPointSubscription/SetSynchronizationPointResponse</wsa:Action></s:Header><s:Body><tev:SetSynchronizationPointResponse></tev:SetSynchronizationPointResponse></s:Body></s:Envelope>
+
+---
+
+
+POST /onvif/image_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1988
+Connection: close
+SOAPAction: "http://www.onvif.org/ver20/imaging/wsdl/GetOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">FA6lnpBoV0BSy1EV3cEPoJygXLM=</wsse:Password>
+				<wsse:Nonce>NjJlNDI4Mzk2ODA1MThkAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:34:33Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<timg:GetOptions>
+			<timg:VideoSourceToken>V_SRC_000</timg:VideoSourceToken>
+		</timg:GetOptions>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2061
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><timg:GetOptionsResponse><timg:ImagingOptions><tt:BacklightCompensation><tt:Mode>OFF</tt:Mode><tt:Mode>ON</tt:Mode></tt:BacklightCompensation><tt:Brightness><tt:Min>0</tt:Min><tt:Max>100</tt:Max></tt:Brightness><tt:ColorSaturation><tt:Min>0</tt:Min><tt:Max>100</tt:Max></tt:ColorSaturation><tt:Contrast><tt:Min>0</tt:Min><tt:Max>100</tt:Max></tt:Contrast><tt:Exposure><tt:Mode>AUTO</tt:Mode><tt:MinExposureTime><tt:Min>10</tt:Min><tt:Max>10</tt:Max></tt:MinExposureTime><tt:MaxExposureTime><tt:Min>10</tt:Min><tt:Max>320000</tt:Max></tt:MaxExposureTime><tt:MinGain><tt:Min>0</tt:Min><tt:Max>0</tt:Max></tt:MinGain><tt:MaxGain><tt:Min>0</tt:Min><tt:Max>100</tt:Max></tt:MaxGain></tt:Exposure><tt:IrCutFilterModes>ON</tt:IrCutFilterModes><tt:IrCutFilterModes>OFF</tt:IrCutFilterModes><tt:IrCutFilterModes>AUTO</tt:IrCutFilterModes><tt:Sharpness><tt:Min>0</tt:Min><tt:Max>100</tt:Max></tt:Sharpness><tt:WideDynamicRange><tt:Mode>ON</tt:Mode><tt:Mode>OFF</tt:Mode><tt:Level><tt:Min>0</tt:Min><tt:Max>100</tt:Max></tt:Level></tt:WideDynamicRange><tt:WhiteBalance><tt:Mode>AUTO</tt:Mode></tt:WhiteBalance></timg:ImagingOptions></timg:GetOptionsResponse></s:Body></s:Envelope>
+---------
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1935
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetVideoSourceConfigurationOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">KvyD43ktPO+NGHfyp7Iuc4QAC+8=</wsse:Password>
+				<wsse:Nonce>NjJlNDI4Mzk2ODA2NjQzAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:34:33Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<trt:GetVideoSourceConfigurationOptions>
+			<trt:ConfigurationToken>V_SRC_000</trt:ConfigurationToken>
+		</trt:GetVideoSourceConfigurationOptions>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1413
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><trt:GetVideoSourceConfigurationOptionsResponse><trt:Options><tt:BoundsRange><tt:XRange><tt:Min>0</tt:Min><tt:Max>2592</tt:Max></tt:XRange><tt:YRange><tt:Min>0</tt:Min><tt:Max>1944</tt:Max></tt:YRange><tt:WidthRange><tt:Min>320</tt:Min><tt:Max>2592</tt:Max></tt:WidthRange><tt:HeightRange><tt:Min>240</tt:Min><tt:Max>1944</tt:Max></tt:HeightRange></tt:BoundsRange><tt:VideoSourceTokensAvailable>V_SRC_000</tt:VideoSourceTokensAvailable></trt:Options></trt:GetVideoSourceConfigurationOptionsResponse></s:Body></s:Envelope>
+
+
+---------
+
+
+POST /onvif/media_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2302
+Connection: close
+SOAPAction: "http://www.onvif.org/ver10/media/wsdl/GetOSDOptions"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:tmd="http://www.onvif.org/ver10/deviceIO/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tr2="http://www.onvif.org/ver20/media/wsdl" xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl" xmlns:tan_ae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding" xmlns:tan_re="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding" xmlns:tse="http://www.onvif.org/ver10/search/wsdl" xmlns:trp="http://www.onvif.org/ver10/replay/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl"><SOAP-ENV:Header><wsse:Security SOAP-ENV:mustUnderstand="true"><wsse:UsernameToken><wsse:Username>root</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">Bf5vYm5ToxaZFTJoIohZWJWm07Y=</wsse:Password><wsse:Nonce>NjJlNDI4Mzk2ODA4MWMxAA==</wsse:Nonce><wsu:Created>2022-07-29T18:34:33Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><trt:GetOSDOptions><trt:ConfigurationToken>V_SRC_000</trt:ConfigurationToken></trt:GetOSDOptions></SOAP-ENV:Body></SOAP-ENV:Envelope>
+
+HTTP/1.1 400 Bad Request
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1117
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><s:Fault><s:Code><s:Value>s:Receiver</s:Value><s:Subcode><s:Value>ter:ActionNotSupported</s:Value></s:Subcode></s:Code><s:Reason><s:Text xml:lang="en">Action Not Implemented</s:Text></s:Reason></s:Fault></s:Body></s:Envelope>
+
+
+----------
+
+
+
+POST /onvif/ptz_service HTTP/1.1
+Host: 192.168.1.27:8000
+User-Agent: gSOAP/2.7
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 1833
+Connection: keep-alive
+SOAPAction: "http://www.onvif.org/ver20/ptz/wsdl/GetConfigurations"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope" xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/tns.xsd" xmlns:c14n="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa5="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2004/06/xmlmime" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tplt="http://www.onvif.org/ver10/plus/schema" xmlns:tpl="http://www.onvif.org/ver10/plus/wsdl">
+	<SOAP-ENV:Header>
+		<wsse:Security SOAP-ENV:mustUnderstand="true">
+			<wsse:UsernameToken>
+				<wsse:Username>root</wsse:Username>
+				<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">1rfy0tfVPh7/iVmHifTFQFLejlc=</wsse:Password>
+				<wsse:Nonce>NjJlNDI4Mzk2ODBhNjRhAA==</wsse:Nonce>
+				<wsu:Created>2022-07-29T18:34:33Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</SOAP-ENV:Header>
+	<SOAP-ENV:Body>
+		<tptz:GetConfigurations></tptz:GetConfigurations>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+HTTP/1.1 200 OK
+Server: hsoap/2.8
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 2764
+Connection: close
+
+<?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:e="http://www.w3.org/2003/05/soap-encoding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns1="http://www.onvif.org/ver10/topics" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:tds="http://www.onvif.org/ver10/device/wsdl" xmlns:trt="http://www.onvif.org/ver10/media/wsdl" xmlns:tev="http://www.onvif.org/ver10/events/wsdl" xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl" xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl" xmlns:ter="http://www.onvif.org/ver10/error" ><s:Body><tptz:GetConfigurationsResponse><tptz:PTZConfiguration token="PTZ_000"><tt:Name>PTZ_000</tt:Name><tt:UseCount>1</tt:UseCount><tt:NodeToken>NODE_000</tt:NodeToken><tt:DefaultAbsolutePantTiltPositionSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:DefaultAbsolutePantTiltPositionSpace><tt:DefaultAbsoluteZoomPositionSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:DefaultAbsoluteZoomPositionSpace><tt:DefaultRelativePanTiltTranslationSpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/TranslationGenericSpace</tt:DefaultRelativePanTiltTranslationSpace><tt:DefaultRelativeZoomTranslationSpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/TranslationGenericSpace</tt:DefaultRelativeZoomTranslationSpace><tt:DefaultContinuousPanTiltVelocitySpace>http://www.onvif.org/ver10/tptz/PanTiltSpaces/VelocityGenericSpace</tt:DefaultContinuousPanTiltVelocitySpace><tt:DefaultContinuousZoomVelocitySpace>http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</tt:DefaultContinuousZoomVelocitySpace><tt:DefaultPTZSpeed><tt:PanTilt x="0.5" y="0.5" space="http://www.onvif.org/ver10/tptz/PanTiltSpaces/GenericSpeedSpace" /><tt:Zoom x="0.5" space="http://www.onvif.org/ver10/tptz/ZoomSpaces/ZoomGenericSpeedSpace" /></tt:DefaultPTZSpeed><tt:DefaultPTZTimeout>PT5S</tt:DefaultPTZTimeout><tt:PanTiltLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange><tt:YRange><tt:Min>-1.0</tt:Min><tt:Max>1.0</tt:Max></tt:YRange></tt:Range></tt:PanTiltLimits><tt:ZoomLimits><tt:Range><tt:URI>http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</tt:URI><tt:XRange><tt:Min>0.0</tt:Min><tt:Max>1.0</tt:Max></tt:XRange></tt:Range></tt:ZoomLimits></tptz:PTZConfiguration></tptz:GetConfigurationsResponse></s:Body></s:Envelope>
+
+
+---------
+
+
