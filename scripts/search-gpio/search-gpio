@@ -1,10 +1,15 @@
 #!/bin/sh
 
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <from pin> <to pin>"
+  exit 1
+fi
+
 ctl="/sys/class/gpio/gpio"
 
 echo "Start blink (output) on all gpio"
 echo ""
-for pin in $(seq 0 120); do
+for pin in $(seq $1 $2); do
   echo "================================="
   [ ! -f /sys/class/gpio/export ] && exit
   [ ! -d ${ctl}${pin} ] && echo ${pin} >/sys/class/gpio/export && echo "Activate in system GPIO-${pin}"
