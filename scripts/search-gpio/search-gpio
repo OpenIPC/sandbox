@@ -1,0 +1,17 @@
+#!/bin/sh
+
+ctl="/sys/class/gpio/gpio"
+
+echo "Start blink (output) on all gpio"
+echo ""
+for pin in $(seq 0 120); do
+  echo "================================="
+  [ ! -f /sys/class/gpio/export ] && exit
+  [ ! -d ${ctl}${pin} ] && echo ${pin} >/sys/class/gpio/export && echo "Activate in system GPIO-${pin}"
+  [ -f ${ctl}${pin}/direction ] && echo out >${ctl}${pin}/direction && echo "  Set GPIO-${pin} to OUTPUT mode"
+  [ -f ${ctl}${pin}/value ] && echo 0 >${ctl}${pin}/value && echo "    Set GPIO-${pin} to LO level" ; sleep 1
+  [ -f ${ctl}${pin}/value ] && echo 1 >${ctl}${pin}/value && echo "    Set GPIO-${pin} to HI level" ; sleep 1
+  [ -f ${ctl}${pin}/direction ] && echo in >${ctl}${pin}/direction && echo "  Set GPIO-${pin} to INPUT mode"
+  [ -d ${ctl}${pin} ] && echo ${pin} >/sys/class/gpio/unexport && echo "Remove from system GPIO-${pin}"
+  logger HELLO - ${pin}
+done
