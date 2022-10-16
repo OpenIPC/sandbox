@@ -11,8 +11,8 @@
 
 login=$(cat /etc/httpd.conf | grep cgi-bin | cut -d':' -f2)
 pass=$(cat /etc/httpd.conf | grep cgi-bin | cut -d':' -f3)
-again_high_target=17000
-again_low_target=6000
+again_high_target=14000
+again_low_target=2000
 pollingInterval=4
 led_state=0
 again_led_on=0
