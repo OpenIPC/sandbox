@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# The OpenIPC telemetry system
+#
+
+
+tid="UA-xxxxxxxxx-1"
+
+function send() {
+    local cam_id=$(cat /sys/class/net/$(ip route show default | awk '/default/ {print $5}')/address)
+    local chip_id=$(ipcinfo --chip_id || echo unknown)
+    local sensor_id=$(ipcinfo --long_sensor || echo unknown)
+    curl -s "https://www.google-analytics.com/batch?v=1&tid=${tid}&cid=${cam_id}&t=event&ec=chip_id&ea=${chip_id}"
+    curl -s "https://www.google-analytics.com/batch?v=1&tid=${tid}&cid=${cam_id}&t=event&ec=sensor_id&ea=${sensor_id}"
+}
+
+send
