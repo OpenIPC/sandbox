@@ -26,7 +26,7 @@ led_on(){
 }
 
 led_off(){
-        curl curl -u $login:$pass http://localhost/night/off && \
+        curl -u $login:$pass http://localhost/night/off && \
         led_state=0 && \
         echo LIGHT IS OFF
 }
