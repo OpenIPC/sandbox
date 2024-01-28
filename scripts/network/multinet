@@ -1,2 +1,20 @@
 #!/bin/sh
 
+operation="$1"
+case $operation in
+	"i" | "install")
+		curl https://raw.githubusercontent.com/johndi3/openipc-sandbox/main/scripts/network/S40network -o /etc/init.d/S40network
+		curl https://raw.githubusercontent.com/johndi3/openipc-sandbox/main/scripts/network/interface_monitor.sh -o /usr/sbin/interface_monitor.sh
+		curl https://raw.githubusercontent.com/johndi3/openipc-sandbox/main/scripts/network/default.script -o /usr/share/udhcpc/default.script
+		chmod 755 /etc/init.d/S40network /usr/sbin/interface_monitor.sh /usr/share/udhcpc/default.script
+		echo "scripts installed successfully"
+		;;
+	"u" | "uninstall")
+		rm /overlay/etc/init.d/S40network /overlay/usr/sbin/interface_monitor.sh /overlay/usr/share/udhcpc/default.script
+		mount -o remount /
+		echo "scripts uninstalled successfully"
+		;;
+	*)
+		echo "need operation command: install or uninstall"
+		;;
+esac
