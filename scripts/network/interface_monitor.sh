@@ -13,10 +13,10 @@ monitor_interface () {
                 echo "interface $1 is $state"
                 case "$state" in
                         down | lowerlayerdown)
-                                kill -12 `cat /var/run/udhcpc.$1.pid`
+                                kill -s SIGUSR2 `cat /var/run/udhcpc.$1.pid`
                                 ;;
                         up)
-                        kill -10 `cat /var/run/udhcpc.$1.pid`
+                        kill -s SIGUSR1 `cat /var/run/udhcpc.$1.pid`
                                 ;;
                         esac
         done

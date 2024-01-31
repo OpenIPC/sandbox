@@ -1,6 +1,6 @@
 ![OpenIPC logo][logo]
 
-## OpenIPC multinet
+## OpenIPC MultiNet
 **_Experimental system for manage several network interfaces that are available on OpenIPC devices simultaneously_**
 
 
@@ -15,6 +15,10 @@ curl -s https://raw.githubusercontent.com/OpenIPC/sandbox/main/scripts/network/m
 curl -s https://raw.githubusercontent.com/OpenIPC/sandbox/main/scripts/network/multinet | sh -s -- uninstall
 ```
 
+### What has changed
+- Enable eth0 by default if there's an Ethernet port
+- Set different metrics to all interfaces. eth0 will have the highest priority over any other connections. All traffic will go through eth0 if there's Ethnetnet connections. All other interfaces can still listen for incoming traffic at the same time
+- Monitor Ethernet port status changes, so Ethernet is now plug and play
 
 ### Notes
 We would be deeply grateful if you could test this and send us feedback and any suggestions or improvements you have.
