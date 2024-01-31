@@ -1,6 +1,6 @@
 ![OpenIPC logo][logo]
 
-## OpenIPC MultiNet
+## OpenIPC multinet
 **_Experimental system for manage several network interfaces that are available on OpenIPC devices simultaneously_**
 
 
