@@ -1,7 +1,7 @@
 ### Firmware repacker
 
 ```
-sh repack.sh ssc333_lite_tp-link-tapo-c110-v2-nor SSID PASSWORD
+curl -s https://raw.githubusercontent.com/OpenIPC/sandbox/main/scripts/repack/repack.sh | sh -s -- ssc333_lite_tp-link-tapo-c110-v2-nor SSID PASSWORD
 ```
 
 ### Flashing
