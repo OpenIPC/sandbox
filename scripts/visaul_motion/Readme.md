@@ -1,7 +1,8 @@
 ## OpenIPC VisualMotion
-Adds to `majestic_webui` **visual editor** for regions of _interest_ and _exluded_ from motion detection.
 
-![./demo.png]
+![demo](demo.png)
+
+Adds to `majestic_webui` **visual editor** for regions of _interest_ and _exluded_ from motion detection.
 
 Works on fresh Firefox, Chromium, Edge.
 
