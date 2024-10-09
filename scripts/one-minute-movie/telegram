@@ -1,0 +1,96 @@
+#!/bin/sh
+[ -e "/etc/webui/telegram.conf" ] && source /etc/webui/telegram.conf
+
+if [ "$telegram_enabled" != "true" ]; then
+	echo "Sending to Telegram is not enabled"
+	exit 1
+fi
+
+if [ -z "$telegram_token" ]; then
+	echo "Telegram token not found"
+	exit 1
+fi
+
+if [ -z "$telegram_channel" ]; then
+	echo "Telegram channel not found"
+	exit 1
+fi
+
+if [ -z "$telegram_caption" ]; then
+	telegram_message="$(hostname -s), $(date +'%F %T')"
+else
+	telegram_message="$(echo "$telegram_caption" | sed "s/%hostname/$(hostname -s)/;s/%datetime/$(date +"%F %T")/;s/%soctemp/$(ipcinfo --temp)/")"
+fi
+
+if [ "$telegram_heif" = "true"  ] && [ "$(yaml-cli -g .video0.codec)" = "h265" ]; then
+	snapshot=/tmp/snapshot.heif
+	wget -q -T1 localhost/image.heif -O "$snapshot"
+else
+	snapshot=/tmp/snapshot.jpg
+	wget -q -T1 localhost/image.jpg -O "$snapshot"
+fi
+
+if [ ! -e "$snapshot" ]; then
+	echo "Snapshot file not found"
+	exit 1
+fi
+
+command="curl --verbose"
+command="curl -s"
+command="${command} --connect-timeout 100"
+command="${command} --max-time 100"
+
+if [ "$openwall_proxy_enabled" = "true" ] && [ -e "/etc/webui/proxy.conf" ]; then
+	source /etc/webui/proxy.conf
+	command="${command} --socks5-hostname ${socks5_host}:${socks5_port}"
+	command="${command} --proxy-user ${socks5_login}:${socks5_password}"
+fi
+
+command="${command} -F 'chat_id=${telegram_channel}'"
+command="${command} -F 'caption=${telegram_message}'"
+command="${command} --url https://api.telegram.org/bot${telegram_token}"
+
+# send_queue parameter exists, sending video
+# cli -g .records.path
+if [ -n "$1" ]; then
+	while [ -n "$1" ]
+	do
+		case $1 in
+			send_queue)
+				dir='/mnt/mmcblk0p1/queue/'
+				for fname in `ls -1 ${dir}`
+				do
+					# send, if $fname not opened
+					if [ -z `lsof | grep ${fname}` ]; then
+						if [ "$telegram_document" = "true" ]; then
+							cmd="${command}/sendDocument"
+							cmd="${cmd} -F 'document=@${dir}${fname}'"
+						else
+							cmd="${command}/sendVideo"
+							cmd="${cmd} -F 'video=@${dir}${fname}'"
+						fi
+						echo $cmd
+						`eval "$cmd" | jsonfilter -e '@.ok'` && rm ${dir}${fname} 
+					fi
+				done
+				;;
+			*)
+				echo "Usage: $0 (send_queue)"
+				;;
+		esac
+		shift
+	done
+else
+# 
+	if [ "$telegram_document" = "true" ]; then
+		command="${command}/sendDocument"
+		command="${command} -F 'document=@${snapshot}'"
+	else
+		command="${command}/sendPhoto"
+		command="${command} -F 'photo=@${snapshot}'"
+	fi
+	echo "$command"
+	eval "$command"
+fi
+
+exit 0
