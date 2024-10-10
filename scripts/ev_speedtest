@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# EVIL DEVICES SPEEDTEST SCRIPT
+# VER
+VER="EVIL DEVICES SPEEDTEST SCRIPT v.20241010-1847"
+# SETTINGS
+# - Server URL
+SRV="http://212.183.159.230/"
+# - File to download from server
+SPD=${1:-"10MB.zip"}
+TMPFILE=ev_speedtest.tmp
+# VARS
+#
+URL="${SRV}/${SPD}"
+# FUNCTS
+        prWelcome() {
+                echo "========================================================="
+                echo "      "$VER
+                echo "========================================================="
+        }
+# ====================================== THE BODY ==========================================
+# - HELP
+        if test "$SPD" = "-h"; then
+        prWelcome
+            echo "Usage: [file] or [-h]"
+                echo "Examples:"
+                echo "  ./ev_speedtest 50MB.zip    - test via file "$SRV"50MB.zip"
+                echo "  ./ev_speedtest             - test via internal var SPD"
+                echo "  ./ev_speedtest -h          - this help"
+				echo "P.S.: you may change file to 5MB.zip, 10MB.zip, 20MB.zip, 50MB.zip, 100MB.zip, 200MB.zip, 512MB.zip, 1GB.zip"
+				echo "Also you may use your own web server to store files to download. Just edit the script."
+        else
+#31 - MAIN
+        prWelcome
+        echo "Testing internet speed via "$SRV""
+        echo "File for downloading: "$SPD
+        echo "Testing. Please wait..."
+        curl -o /dev/null "${URL}" >> "${TMPFILE}"  2>&1
+        OUT=$(awk '{print $NF}' "${TMPFILE}" | sed -e '1,2d; s/k//')
+        echo "Download speed is "$(expr $OUT / 125)" Mbit\s"
+        rm $TMPFILE
+        fi
+exit 0
