@@ -78,10 +78,12 @@ case "$1" in
 					metric=0
 				elif [ $interface = "wlan0" ]; then
 					metric=10
-				elif [ $interface = "usb0" ]; then
+				elif [ $interface = "eth1" ]; then
 					metric=20
-				else
+				elif [ $interface = "usb0" ]; then
 					metric=30
+				else
+					metric=40
 				fi
 				route add default gw $i dev $interface metric $metric
 				local_route=`ip route list dev $interface scope link`
