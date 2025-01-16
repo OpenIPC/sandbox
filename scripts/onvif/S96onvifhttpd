@@ -1,0 +1,43 @@
+#!/bin/sh
+
+DAEMON="httpd"
+PIDFILE="/var/run/onvifhttpd.pid"
+DAEMON_ARGS="-p 8080 -h /var/www"
+
+start() {
+	echo -n "Starting onvif $DAEMON: "
+	start-stop-daemon -m -S -q -p "$PIDFILE" -x "$DAEMON" -- $DAEMON_ARGS
+	if [ $? -eq 0 ]; then
+		echo "OK"
+	else
+		echo "FAIL"
+	fi
+}
+
+stop() {
+	echo -n "Stopping onvif $DAEMON: "
+	start-stop-daemon -K -q -p "$PIDFILE"
+	if [ $? -eq 0 ]; then
+		rm -f "$PIDFILE"
+		echo "OK"
+	else
+		echo "FAIL"
+	fi
+}
+
+case "$1" in
+	start|stop)
+		$1
+		;;
+
+	restart|reload)
+		stop
+		sleep 3
+		start
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|reload}"
+		exit 1
+		;;
+esac
