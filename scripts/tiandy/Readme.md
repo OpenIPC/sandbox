@@ -4,7 +4,7 @@ This script is designed for the Tiandy camera running OpenIPC firmware. At rando
 ## Installation
 To install the script that restarts the majestic process, run the following commands on your device:
 ```sh
-curl -L -o /etc/init.d/S94moloko https://raw.githubusercontent.com/OpenIPC/sandbox/tree/main/scripts/tiandy/refs/heads/main/S94moloko
+curl -L -o /etc/init.d/S94moloko https://raw.githubusercontent.com/OpenIPC/sandbox/refs/heads/main/scripts/tiandy/S94moloko
 chmod +x /etc/init.d/S94moloko
 reboot
 ```
