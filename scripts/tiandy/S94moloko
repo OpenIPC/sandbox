@@ -1,0 +1,59 @@
+#!/bin/sh
+PIDFILE=/var/run/restart_majestic.pid
+
+start() {
+    if [ -f "$PIDFILE" ]; then
+        echo "Service already running"
+        exit 1
+    fi
+    echo "Starting service..."
+    /bin/sh -c 'while true; do
+        METRICS=$(curl -s "http://127.0.0.1/metrics/isp")
+        if [ -n "$METRICS" ]; then
+            ISP_AVELUM=$(echo "$METRICS" | grep "^isp_avelum " | awk "{print \$2}")
+            if [ -n "$ISP_AVELUM" ] && echo "$ISP_AVELUM" | grep -q "^[0-9]*\.*[0-9]*$"; then
+                ISP_AVELUM_INT=$(printf "%.0f" "$ISP_AVELUM")
+                if [ "$ISP_AVELUM_INT" -ge 250 ]; then
+                    killall majestic
+                    sleep 3
+                    majestic &
+                fi
+            fi
+        fi
+        sleep 5
+    done' &
+    echo $! > "$PIDFILE"
+    echo "Service started (PID: $(cat $PIDFILE))"
+}
+
+stop() {
+    if [ -f "$PIDFILE" ]; then
+        echo "Stopping service..."
+        kill $(cat "$PIDFILE")
+        rm -f "$PIDFILE"
+        echo "Service stopped"
+    else
+        echo "Service not running"
+        exit 1
+    fi
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        sleep 1
+        start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
