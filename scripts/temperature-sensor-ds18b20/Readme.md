@@ -85,3 +85,9 @@ exit 0
 ```
 chmod +x /usr/sbin/ev_mqtt_ds18b20
 ```
+5) подключаем сам датчик ds18b20 к плате
+```
+ds18b20 data pin connected to TX pin of G6S PCB (socket J2 pin #2)
+ds18b20 + pin connected to 3.3V pin of G6S PCB (socket J3 pin #12)
+ds18b20 - pin connected to GND pin of G6S PCB (socket J2 pin #3)
+```
