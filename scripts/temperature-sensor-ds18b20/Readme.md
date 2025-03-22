@@ -112,7 +112,19 @@ Pinout ds18b20:
 
 ![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam.jpg)
 ![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam2.jpg)
-![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam3jpg)
-![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam4jpg)
+![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam3.jpg)
+![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam4.jpg)
+
+
+
+Немного о gpio:
+
+```
+0_2 = 0*8+2 = 2
+8_2 = 8*8+2 = 66
+```
+Прочее:
+Бинарный файл w1-ds18b20 для gk7205v200 - 
+
 
 
