@@ -100,3 +100,19 @@ ds18b20 - pin connected to GND pin of G6S PCB (socket J2 pin #3)
 Pinout ds18b20:
 
 ![ds18b20 pinout](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/ds18b20dtsh.GIF)
+
+Я впаял колодку к пятакам UART, но пятаков 3, а колодка на 4 пина. Крайний 4й я загнул и припаял к нему провод и соединил с +3.3V.
+
+![Вот такой комплект](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/mod_pcb.jpg)
+![Вот такой комплект](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/mod_pcb1.jpg)
+![Вот такой комплект](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/wiring.jpg)
+
+![Вот такой комплект](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/ds18b20-1.jpg)
+![Вот такой комплект](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/ds18b20-3.jpg)
+
+![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam.jpg)
+![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam2.jpg)
+![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam3jpg)
+![Камера](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/cam4jpg)
+
+
