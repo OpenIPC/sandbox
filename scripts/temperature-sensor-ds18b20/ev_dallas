@@ -15,7 +15,6 @@
 #       GND   DATA  +3.3V
 #
 # CONST
-#UNITS=${1:-""}
 UNITS=${1}
 #
 ipctool gpio mux 2 GPIO0_2
