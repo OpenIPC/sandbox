@@ -92,3 +92,7 @@ ds18b20 + pin connected to 3.3V pin of G6S PCB (socket J3 pin #12)
 ds18b20 - pin connected to GND pin of G6S PCB (socket J2 pin #3)
 ```
 ![pinout](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/g6s.gif)
+
+Также необходимо припаять резистор - подтяжку номиналом 4,7 кОм (472). Я припаял смд вариант прямо на ноги датчика.
+
+![подтяжка](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/ds18b20.jpg)
