@@ -1,0 +1,27 @@
+#!/bin/sh
+# EVOL DEVICES ev_dallas script ver. 2025022-1700
+# It getting data from temperature sensor Dallas ds18b20
+# Tested on SoC's - goke gk7205v300
+#
+# ds18b20 data pin connected to TX pin of G6S PCB (socket J2 pin #2)
+# ds18b20 + pin connected to 3.3V pin of G6S PCB (socket J3 pin #12)
+# ds18b20 - pin connected to GND pin of G6S PCB (socket J2 pin #3)
+#
+#     Sensor ds18b20 pinout
+#        --------------
+#        |  ds18b20   |
+#        --------------
+#        |     |      |
+#       GND   DATA  +3.3V
+#
+# CONST
+UNITS=${1}
+#
+ipctool gpio mux 2 GPIO0_2
+if test "$UNITS" = "-u"; then
+        w1-ds18b20 -base 0x120B0000 -gpio 2 2>&1 | awk '{print $3 " C"}'
+
+else
+        w1-ds18b20 -base 0x120B0000 -gpio 2 2>&1 | awk '{print $3}'
+fi
+ipctool gpio mux 2 UART0_TXD
