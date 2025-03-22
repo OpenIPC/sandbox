@@ -1,4 +1,5 @@
 Мини гайд по подключению датчика температуры Dallas ds18b20 к камере на SoC GK7205V300 (плата G6S) с матрицой IMX335, используя прошивку OpenIPC.
+
 0) нам потребуется скомпилированный бинарник под нужное железо
 
 ```
@@ -6,7 +7,8 @@
 ```
 
 Описание использования из репозитория:
-![repo](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/ds1820binary.gif)
+
+![repo](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/ds1820b.gif)
 
 1) создаем скрипт /usr/sbin/ev_dallas, он есть в этом репо.
 ```
