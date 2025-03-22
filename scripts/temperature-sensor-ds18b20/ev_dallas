@@ -1,0 +1,16 @@
+#!/bin/sh
+# for goke gk7205v300/gk7205v200/gk7205v210
+# ds18b20 connected to TX pin of G6S PCB
+#
+# CONST
+#UNITS=${1:-""}
+UNITS=${1}
+#
+ipctool gpio mux 2 GPIO0_2
+if test "$UNITS" = "-u"; then
+        w1-ds18b20 -base 0x120B0000 -gpio 2 2>&1 | awk '{print $3 " C"}'
+
+else
+        w1-ds18b20 -base 0x120B0000 -gpio 2 2>&1 | awk '{print $3}'
+fi
+ipctool gpio mux 2 UART0_TXD
