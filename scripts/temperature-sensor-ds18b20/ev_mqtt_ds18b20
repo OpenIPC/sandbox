@@ -20,7 +20,7 @@ TEMPDALLAS0=$(ev_dallas)
 
 if test "$MQTT_SRV" = "-h"; then
   echo "================================================" && echo $VER && echo "================================================"
-  echo "Usage: [server] [topic]" && echo "Example: ./ev_mqtt mymqtt.org my_root_topic" && echo "Example: ./ev_mqtt 192.168.0.5 my_2root_topic"
+  echo "Usage: [server] [topic]" && echo "Example: ./ev_mqtt_ds18b20 mymqtt.org my_root_topic" && echo "Example: ./ev_mqtt 192.168.0.5 my_2root_topic"
 else
         # SEND
         #
