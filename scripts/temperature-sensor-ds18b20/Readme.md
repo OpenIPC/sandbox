@@ -123,8 +123,16 @@ Pinout ds18b20:
 0_2 = 0*8+2 = 2
 8_2 = 8*8+2 = 66
 ```
+С помощью
+ ```ipctool reginfo```
+можно посмотреть все доступные режимы на плате. Последний параметр - точное название.
+
+![gpio](https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/gpio.jpg)
+
+
 Прочее:
-Бинарный файл w1-ds18b20 для gk7205v200 - 
+
+Бинарный файл w1-ds18b20 для gk7205v200 - https://github.com/dioxyde2023/sandbox/blob/main/scripts/temperature-sensor-ds18b20/w1-ds18b20-gk7205v200
 
 
 
