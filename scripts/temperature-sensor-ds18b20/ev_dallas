@@ -1,5 +1,5 @@
 #!/bin/sh
-# EVIL DEVICES ev_dallas script ver. 2025022-1700
+# EVOL DEVICES ev_dallas script ver. 2025022-1700
 # It getting data from temperature sensor Dallas ds18b20
 # Tested on SoC's - goke gk7205v300
 #
