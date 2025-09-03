@@ -1,0 +1,89 @@
+#!/bin/sh
+
+PORT=/dev/ttyAMA0
+DELAY='sleep .5'
+
+if [ -z "$1" ]; then
+	echo Usage: $0 [start], [stop], [day], [night], [wide], [tele], [far], [near], [up], [down], [left], [right]
+	exit 0
+fi
+
+function pelcoD_night {
+	printf '\xFF\x01\x00\x09\x00\x01\x0B' > $PORT
+}
+function pelcoD_day {
+	printf '\xFF\x01\x00\x0B\x00\x01\x0D' > $PORT
+}
+
+
+function pelcoD_start {
+  stty -F /dev/ttyAMA0 115200 raw -echo -onlcr
+$DELAY
+############ need for lense wakeup##########
+ printf '\x51\x01\x04\x79\x01\x0D\x0A\x2E\x02\x7E\x00\x00\x00\x95' > $PORT
+$DELAY
+	printf '\xFF\x01\x00\x07\x00\x53\x5B' > $PORT
+$DELAY
+	 printf '\xFF\x01\x00\x07\x00\x52\x5A' > $PORT
+
+###########click-clack ICR
+sleep 3
+	pelcoD_night 
+sleep 3
+	pelcoD_day
+}
+
+
+pelcoD_stop() {
+	printf '\xFF\x01\x00\x00\x00\x00\x01' > $PORT
+}
+
+pelcoD_tele() {
+	printf '\xFF\x01\x00\x20\x00\x00\x21' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_wide() {
+	printf '\xFF\x01\x00\x40\x00\x00\x41' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_far() {
+	printf '\xFF\x01\x00\x80\x00\x00\x81' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_near() {
+	printf '\xFF\x01\x01\x00\x00\x00\x02' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_up() {
+	printf '\xFF\x01\x00\x08\x00\x00\x09' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_down() {
+	printf '\xFF\x01\x00\x10\x00\x00\x11' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_right() {
+	printf '\xFF\x01\x00\x02\x00\x00\x03' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_left() {
+	printf '\xFF\x01\x00\x04\x00\x00\x05' > $PORT
+$DELAY
+	pelcoD_stop
+}
+
+pelcoD_$1
