@@ -1,0 +1,14 @@
+#!/bin/sh
+
+IDENTIFY="$(fw_printenv -n ethaddr | tr 'a-z' 'A-Z' | tr -d ':')"
+FILENAME="$(date +'%Y%m%d%H%M.jpg')"
+TOKEN="$(fw_printenv -n yandex_oauth)"
+OPTIONS="--connect-timeout 10 --max-time 10 -s"
+
+
+curl ${OPTIONS} -o /tmp/snapshot.jpg http://127.0.0.1/image.jpg >/dev/null 2>&1
+cp /tmp/snapshot.jpg /mnt/mmcblk0p1/${FILENAME} >/dev/null 2>&1
+curl ${OPTIONS} -k -L -H "Authorization: OAuth ${TOKEN}" -X PUT "https://cloud-api.yandex.net:443/v1/disk/resources/?path=app:/$IDENTIFY&overwrite=true" >/dev/null 2>&1
+export YANDEX=$(curl ${OPTIONS} -k -L -H "Authorization: OAuth ${TOKEN}" "https://cloud-api.yandex.net:443/v1/disk/resources/upload/?path=app:/$IDENTIFY/$FILENAME&overwrite=true" | jsonfilter -e '@.href')
+curl ${OPTIONS} -k -L -H "Authorization: OAuth ${TOKEN}" -T /tmp/snapshot.jpg "${YANDEX}" | logger -t yandex
+
