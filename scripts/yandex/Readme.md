@@ -25,4 +25,11 @@ fw_setenv yandex_oauth YOU_OAUTH_KEY
 Run the installation command in UART, SSH or WEB console:
 
 ```
+curl -L -o /usr/sbin/yandex https://raw.githubusercontent.com/OpenIPC/sandbox/refs/heads/main/scripts/yandex/yandex ; chmod +x /usr/bin/yandex
 ```
+
+### Features and Usage
+
+The script will likely be modified soon and possibly integrated into the WebUI interface later. 
+
+However, it can already be used via crontab or manually launched.
