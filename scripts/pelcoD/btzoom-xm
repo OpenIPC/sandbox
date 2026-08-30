@@ -1,0 +1,160 @@
+#!/bin/sh
+#
+# btzoom-xm - PTZ control over the Xiongmai UART protocol (not Pelco-D).
+# Frame/checksum logic ported 1:1 from main.c (send_cmd/set_focus/init_ptz).
+
+PORT=/dev/ttyAMA1
+DELAY='sleep .5'
+
+ADDR=1          # addressPTZ in main.c
+SYNC=197        # 0xC5 - SYNC byte used when AUTO_FOCUS is defined (main.c default)
+TERM_BYTE=92    # 0x5C - frame terminator byte
+
+if [ -z "$1" ]; then
+	echo "Usage: $0 [start], [stop], [wide], [tele], [far], [near], [up], [down], [left], [right]"
+	echo "Note: day/night switching has no known send command in main.c (XM protocol only"
+	echo "      parses incoming DAY/NIGHT reports) and is therefore not implemented here."
+	exit 0
+fi
+
+# byte_esc <decimal value 0-255> -> literal text "\NNN" (octal, for later
+# expansion by "printf %b"). Octal \NNN is POSIX-guaranteed for %b, unlike
+# \xHH which some /bin/sh printf builtins (e.g. dash) don't support at all.
+byte_esc() {
+	printf '\\%03o' "$1"
+}
+
+# xm_send <panSpeed> <tiltSpeed> <zoomSpeed>
+#   panSpeed/tiltSpeed: -100..100, zoomSpeed: -1, 0, 1
+# Mirrors send_cmd() in main.c exactly, including the direction-bit layout.
+xm_send() {
+	panSpeed=$1
+	tiltSpeed=$2
+	zoomSpeed=$3
+
+	command1=0
+	command2=0
+
+	if [ "$panSpeed" -lt 0 ]; then
+		command2=$((command2 | 0x04))
+		panSpeed=$((0 - panSpeed))
+	elif [ "$panSpeed" -gt 0 ]; then
+		command2=$((command2 | 0x02))
+	fi
+	data1=$((panSpeed * 63 / 100))
+
+	if [ "$tiltSpeed" -lt 0 ]; then
+		command2=$((command2 | 0x10))
+		tiltSpeed=$((0 - tiltSpeed))
+	elif [ "$tiltSpeed" -gt 0 ]; then
+		command2=$((command2 | 0x08))
+	fi
+	data2=$((tiltSpeed * 63 / 100))
+
+	if [ "$zoomSpeed" -lt 0 ]; then
+		command2=$((command2 | 0x40))
+	elif [ "$zoomSpeed" -gt 0 ]; then
+		command2=$((command2 | 0x20))
+	fi
+
+	checksum=$(( (ADDR + command1 + command2 + data1 + data2) % 100 ))
+
+	frame=$(byte_esc "$SYNC")$(byte_esc "$ADDR")$(byte_esc "$command1")$(byte_esc "$command2")$(byte_esc "$data1")$(byte_esc "$data2")$(byte_esc "$checksum")$(byte_esc "$TERM_BYTE")
+	printf '%b' "$frame" > "$PORT"
+}
+
+# xm_focus near|far
+# Mirrors set_focus() in main.c - NOTE: main.c computes the checksum from
+# command1=command2=0 *before* setting the near/far bit, so the checksum
+# byte is always 1 for both directions. Reproduced as-is for wire compatibility.
+xm_focus() {
+	command1=0
+	command2=0
+	data1=0
+	data2=0
+	checksum=$(( (ADDR + command1 + command2 + data1 + data2) % 100 ))
+
+	if [ "$1" = "near" ]; then
+		command1=1
+	else
+		command2=$((0x80))
+	fi
+
+	frame=$(byte_esc "$SYNC")$(byte_esc "$ADDR")$(byte_esc "$command1")$(byte_esc "$command2")$(byte_esc "$data1")$(byte_esc "$data2")$(byte_esc "$checksum")$(byte_esc "$TERM_BYTE")
+	printf '%b' "$frame" > "$PORT"
+}
+
+# init[] array from main.c, sent once by init_ptz()
+xm_init() {
+	printf '%b' '\245\173\236\360\357\356\340\364' > "$PORT"
+}
+
+xm_stop() {
+	xm_send 0 0 0
+}
+
+xm_start() {
+	stty -F "$PORT" 115200 raw -echo -onlcr
+	$DELAY
+	xm_init
+}
+
+xm_left() {
+	xm_send 100 0 0
+	$DELAY
+	xm_stop
+}
+
+xm_right() {
+	xm_send -100 0 0
+	$DELAY
+	xm_stop
+}
+
+xm_up() {
+	xm_send 0 100 0
+	$DELAY
+	xm_stop
+}
+
+xm_down() {
+	xm_send 0 -100 0
+	$DELAY
+	xm_stop
+}
+
+xm_tele() {
+	xm_send 0 0 1
+	$DELAY
+	xm_stop
+}
+
+xm_wide() {
+	xm_send 0 0 -1
+	$DELAY
+	xm_stop
+}
+
+xm_near() {
+	xm_focus near
+	$DELAY
+	xm_stop
+}
+
+xm_far() {
+	xm_focus far
+	$DELAY
+	xm_stop
+}
+
+xm_day() {
+	echo "day: not supported - main.c has no XM send-command for this" >&2
+	exit 1
+}
+
+xm_night() {
+	echo "night: not supported - main.c has no XM send-command for this" >&2
+	exit 1
+}
+
+xm_$1
