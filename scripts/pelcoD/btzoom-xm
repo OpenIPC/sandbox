@@ -64,9 +64,9 @@ xm_send() {
 }
 
 # xm_focus near|far
-# Mirrors set_focus() in main.c - NOTE: main.c computes the checksum from
-# command1=command2=0 *before* setting the near/far bit, so the checksum
-# byte is always 1 for both directions. Reproduced as-is for wire compatibility.
+# Deliberately NOT a 1:1 mirror of set_focus() in main.c: that code computes
+# the checksum before setting the near/far bit, so every focus frame carries
+# checksum 1 - and a validating MCU discards those frames. Details below.
 xm_focus() {
 	data1=0
 	data2=0
