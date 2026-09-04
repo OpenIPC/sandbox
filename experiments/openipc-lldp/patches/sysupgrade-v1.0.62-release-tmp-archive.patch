@@ -1,0 +1,19 @@
+--- a/sysupgrade
++++ b/sysupgrade
+@@ -466,6 +466,16 @@
+ 	if [ "1" != "$skip_md5" ]; then
+ 		(cd /tmp && md5sum -s -c *.md5sum) || die "Wrong checksum!"
+ 	fi
++	# WebUI uploads live in tmpfs. Once a local archive has been unpacked and
++	# verified, keeping the compressed copy through the RAM pivot needlessly
++	# consumes several MiB on low-memory cameras. Only remove /tmp archives; a
++	# user-supplied archive on persistent storage must not be deleted.
++	case "$archive" in
++		/tmp/*)
++			rm -f "$archive"
++			echo_c 32 "Released archive from RAM"
++			;;
++	esac
+ 	# Combined image (FIT kernel + rootfs packed in one blob, e.g. cv6xx):
+ 	# flashed as a unit by do_update_firmware instead of the split path.
+ 	[ -f "/tmp/firmware.bin.$model" ] && image_combined=1

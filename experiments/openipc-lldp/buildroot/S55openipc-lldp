@@ -1,0 +1,14 @@
+#!/bin/sh
+case "$1" in
+	start)
+		/usr/bin/openipc-lldp -i eth0 >/dev/null 2>&1 &
+		;;
+	stop)
+		killall openipc-lldp 2>/dev/null
+		;;
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+esac
