@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-OPENIPC_LLDP_VERSION = 0.2.1
+OPENIPC_LLDP_VERSION = 0.2.2
 OPENIPC_LLDP_SITE = $(BR2_EXTERNAL_GENERAL_PATH)/package/openipc-lldp
 OPENIPC_LLDP_SITE_METHOD = local
 

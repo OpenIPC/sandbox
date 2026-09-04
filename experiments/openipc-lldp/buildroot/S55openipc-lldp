@@ -1,14 +1,48 @@
 #!/bin/sh
+
+DAEMON=/usr/bin/openipc-lldp
+PIDFILE=/var/run/openipc-lldp.pid
+
+is_running() {
+	[ -f "$PIDFILE" ] || return 1
+	pid="$(cat "$PIDFILE" 2>/dev/null)" || return 1
+	[ -n "$pid" ] && kill -0 "$pid" 2>/dev/null
+}
+
 case "$1" in
 	start)
-		/usr/bin/openipc-lldp -i eth0 >/dev/null 2>&1 &
+		if is_running; then
+			exit 0
+		fi
+
+		rm -f "$PIDFILE"
+		"$DAEMON" -i eth0 >/dev/null 2>&1 &
+		echo $! > "$PIDFILE"
 		;;
+
 	stop)
-		killall openipc-lldp 2>/dev/null
+		if is_running; then
+			pid="$(cat "$PIDFILE")"
+			kill "$pid" 2>/dev/null
+
+			# Give the daemon time to send its TTL=0 shutdown advertisement.
+			i=0
+			while kill -0 "$pid" 2>/dev/null && [ "$i" -lt 5 ]; do
+				sleep 1
+				i=$((i + 1))
+			done
+		fi
+
+		rm -f "$PIDFILE"
 		;;
+
 	restart)
-		$0 stop
-		sleep 1
-		$0 start
+		"$0" stop
+		"$0" start
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
 		;;
 esac
