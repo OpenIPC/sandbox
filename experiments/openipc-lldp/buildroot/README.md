@@ -8,11 +8,12 @@ Copy the directory into the OpenIPC external tree as:
 general/package/openipc-lldp/
 ├── Config.in
 ├── openipc-lldp.mk
+├── LICENSE
 ├── openipc-lldp.c
 └── S55openipc-lldp
 ```
 
-The source file in this repository is the same `openipc-lldp.c`; copy or symlink it into the package directory.
+The source file in this repository is the same `openipc-lldp.c`; copy or symlink it into the package directory, along with `LICENSE`.
 
 Enable the package in the target defconfig:
 
@@ -28,4 +29,4 @@ br-ext-chip-goke/configs/gk7205v200_lite_defconfig
 
 The Buildroot package uses `$(TARGET_CC)` and produces a dynamically linked target binary. On the tested build the installed binary was 9,480 bytes and used `/lib/ld-musl-arm.so.1`.
 
-The init script starts the advertiser after networking as `S55openipc-lldp` and sends SIGTERM on stop via `killall`, allowing the program to transmit an LLDP TTL=0 shutdown advertisement.
+The init script starts the advertiser after networking as `S55openipc-lldp` and sends SIGTERM on stop using a PID file with an executable identity check, allowing the program to transmit an LLDP TTL=0 shutdown advertisement.

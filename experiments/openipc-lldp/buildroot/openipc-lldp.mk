@@ -5,13 +5,15 @@
 ################################################################################
 
 OPENIPC_LLDP_VERSION = 0.2.2
+OPENIPC_LLDP_LICENSE = MIT
+OPENIPC_LLDP_LICENSE_FILES = LICENSE
 OPENIPC_LLDP_SITE = $(BR2_EXTERNAL_GENERAL_PATH)/package/openipc-lldp
 OPENIPC_LLDP_SITE_METHOD = local
 
 define OPENIPC_LLDP_BUILD_CMDS
 	$(TARGET_CC) $(TARGET_CFLAGS) -Os \
 		-o $(@D)/openipc-lldp \
-		$(@D)/openipc-lldp.c
+		$(@D)/openipc-lldp.c $(TARGET_LDFLAGS)
 endef
 
 define OPENIPC_LLDP_INSTALL_TARGET_CMDS

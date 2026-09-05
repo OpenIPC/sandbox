@@ -13,3 +13,13 @@ clean:
 	rm -f openipc-lldp
 
 .PHONY: all clean
+
+# Tests capture frames in memory and never open a raw socket.
+HOSTCC ?= cc
+test:
+	@set -e; bin=$$(mktemp /tmp/openipc-lldp-test.XXXXXX); \
+	trap 'rm -f "$$bin"' EXIT; \
+	$(HOSTCC) -std=c99 -Wall -Wextra -Werror tests/test_lldp.c -o "$$bin"; \
+	"$$bin"
+
+.PHONY: test

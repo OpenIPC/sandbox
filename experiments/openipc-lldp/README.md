@@ -50,7 +50,7 @@ Physical media capabilities:
 Media Attachment Unit type: 16
 ```
 
-The unusual `100base-T2(FD)` entry came from the tested GK7205 Ethernet driver's legacy ethtool capability bitmap. See [docs/TESTED-HARDWARE.md](docs/TESTED-HARDWARE.md).
+The historical `100base-T2(FD)` entry has not been explained by a packet capture; the current encoder does not set that capability. See [docs/TESTED-HARDWARE.md](docs/TESTED-HARDWARE.md).
 
 ## Standalone cross-build
 
@@ -137,8 +137,12 @@ Corresponding patches are under [`patches/`](patches/).
 
 ## Version
 
-Current experiment version: **0.2.1**
+Current experiment version: **0.2.2**
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Host regression checks
+
+Run `make test` with a native C compiler. Tests capture frames in memory; no root privileges or network interface are needed. System name and description overrides are limited to 256 bytes.

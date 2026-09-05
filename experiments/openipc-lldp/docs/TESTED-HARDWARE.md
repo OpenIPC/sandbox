@@ -48,6 +48,8 @@ Media Attachment Unit type: 16
 Vlan ID: - not advertised
 ```
 
-## Driver caveat
+## Unverified historical capability
 
-The `100base-T2(FD)` capability above is unusual. `openipc-lldp` deliberately relays the legacy `ETHTOOL_GSET` capability bitmap reported by the kernel driver rather than attempting to correct or invent PHY capabilities. Drivers may therefore expose odd or stale capability bits.
+The `100base-T2(FD)` entry above is historical output. The current encoder maps supported ethtool flags explicitly and never sets the LLDP 100BASE-T2 capability bits. Attributing this entry to the driver alone was unsupported. A fresh packet capture and matching binary version are needed to distinguish an older encoder issue from switch decoding behavior.
+
+The capability bit ordering follows [IEEE interpretation 8](https://www.ieee802.org/1/pages/int-8.html).

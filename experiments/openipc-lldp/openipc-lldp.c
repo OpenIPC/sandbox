@@ -1,7 +1,9 @@
 #define _GNU_SOURCE
 #include <arpa/inet.h>
 #include <errno.h>
+#include <limits.h>
 #include <linux/ethtool.h>
+#include <net/if_arp.h>
 #include <linux/if_ether.h>
 #include <linux/if_packet.h>
 #include <linux/sockios.h>
@@ -55,6 +57,19 @@ static int put_tlv(uint8_t **pp, const uint8_t *end, uint8_t type,
     return 0;
 }
 
+static int parse_unsigned(const char *s, unsigned max, unsigned *out)
+{
+    char *end;
+    unsigned long value;
+
+    if (*s < '0' || *s > '9') return -1;
+    errno = 0;
+    value = strtoul(s, &end, 10);
+    if (errno || *end || !value || value > max) return -1;
+    *out = (unsigned)value;
+    return 0;
+}
+
 static void trim(char *s)
 {
     size_t n;
@@ -93,16 +108,20 @@ static void make_description(char *out, size_t n)
 {
     char v[64] = "", p[96] = "", b[128] = "";
     struct utsname u;
+    char full[384];
 
     osrel("OPENIPC_VERSION", v, sizeof(v));
     osrel("BUILD_PLATFORM", p, sizeof(p));
     osrel("BUILD_ID", b, sizeof(b));
 
     if (v[0] || p[0] || b[0]) {
-        snprintf(out, n, "OpenIPC%s%s%s%s%s%s",
+        snprintf(full, sizeof(full), "OpenIPC%s%s%s%s%s%s",
                  v[0] ? " " : "", v,
                  p[0] ? " | " : "", p,
                  b[0] ? " | " : "", b);
+        size_t len = strnlen(full, n - 1);
+        memcpy(out, full, len);
+        out[len] = 0;
     } else if (!uname(&u)) {
         snprintf(out, n, "OpenIPC | Linux %s %s", u.release, u.machine);
     } else {
@@ -195,6 +214,7 @@ static uint16_t pmd_from_ethtool(uint32_t a)
 
 static uint16_t mau_from_link(unsigned speed, unsigned duplex)
 {
+    if (duplex != DUPLEX_HALF && duplex != DUPLEX_FULL) return 0;
     if (speed == 10)   return duplex == DUPLEX_FULL ? 11 : 10;
     if (speed == 100)  return duplex == DUPLEX_FULL ? 16 : 15;
     if (speed == 1000) return duplex == DUPLEX_FULL ? 30 : 29;
@@ -284,6 +304,8 @@ static int send_lldp(int raw, int io, int ifindex, const char *ifname,
         APPEND_TLV(3, &v, sizeof(v));
     }
 
+    if (!ttl) goto end_tlvs;
+
     APPEND_TLV(4, ifname, strlen(ifname));
     APPEND_TLV(5, name, strlen(name));
     APPEND_TLV(6, desc, strlen(desc));
@@ -336,7 +358,11 @@ static int send_lldp(int raw, int io, int ifindex, const char *ifname,
         APPEND_TLV(127, v, sizeof(v));
     }
 
+end_tlvs:
     APPEND_TLV(0, NULL, 0);
+
+    /* Raw packet sockets do not guarantee Ethernet minimum-frame padding. */
+    while (p - frame < ETH_ZLEN) *p++ = 0;
 
     memset(&sa, 0, sizeof(sa));
     sa.sll_family = AF_PACKET;
@@ -362,8 +388,8 @@ static void usage(const char *p)
 int main(int argc, char **argv)
 {
     char ifname[IFNAMSIZ] = DEFAULT_IFACE;
-    char name[256] = "";
-    char desc[384] = "";
+    char name[256 + 1] = "";
+    char desc[256 + 1] = "";
     unsigned ttl = DEFAULT_TTL, interval = DEFAULT_INTERVAL;
     int q = 0, opt, raw, io, ifindex;
     struct ifreq ifr;
@@ -372,21 +398,37 @@ int main(int argc, char **argv)
     while ((opt = getopt(argc, argv, "i:n:d:t:r:qVh")) != -1) {
         switch (opt) {
         case 'i':
+            if (!*optarg || strlen(optarg) >= sizeof(ifname)) {
+                fprintf(stderr, "Invalid interface name\n");
+                return 2;
+            }
             snprintf(ifname, sizeof(ifname), "%s", optarg);
             break;
         case 'n':
+            if (strlen(optarg) >= sizeof(name)) {
+                fprintf(stderr, "LLDP text must not exceed 256 bytes\n");
+                return 2;
+            }
             snprintf(name, sizeof(name), "%s", optarg);
             break;
         case 'd':
+            if (strlen(optarg) >= sizeof(desc)) {
+                fprintf(stderr, "LLDP text must not exceed 256 bytes\n");
+                return 2;
+            }
             snprintf(desc, sizeof(desc), "%s", optarg);
             break;
         case 't':
-            ttl = strtoul(optarg, NULL, 10);
-            if (!ttl || ttl > 65535) return 2;
+            if (parse_unsigned(optarg, UINT16_MAX, &ttl)) {
+                fprintf(stderr, "Invalid TTL (expected 1..65535)\n");
+                return 2;
+            }
             break;
         case 'r':
-            interval = strtoul(optarg, NULL, 10);
-            if (!interval) return 2;
+            if (parse_unsigned(optarg, UINT_MAX, &interval)) {
+                fprintf(stderr, "Invalid advertisement interval\n");
+                return 2;
+            }
             break;
         case 'q':
             q = 1;
@@ -400,13 +442,18 @@ int main(int argc, char **argv)
         }
     }
 
+    if (optind != argc) {
+        usage(argv[0]);
+        return 2;
+    }
+
     if (!name[0] && gethostname(name, sizeof(name) - 1))
         snprintf(name, sizeof(name), "openipc-camera");
 
     if (!desc[0])
         make_description(desc, sizeof(desc));
 
-    raw = socket(AF_PACKET, SOCK_RAW, htons(LLDP_ETHERTYPE));
+    raw = socket(AF_PACKET, SOCK_RAW, 0);
     if (raw < 0) {
         perror("socket");
         return 1;
@@ -432,6 +479,12 @@ int main(int argc, char **argv)
 
     if (ioctl(io, SIOCGIFHWADDR, &ifr) < 0) {
         perror("SIOCGIFHWADDR");
+        close(io);
+        close(raw);
+        return 1;
+    }
+    if (ifr.ifr_hwaddr.sa_family != ARPHRD_ETHER) {
+        fprintf(stderr, "%s is not an Ethernet interface\n", ifname);
         close(io);
         close(raw);
         return 1;

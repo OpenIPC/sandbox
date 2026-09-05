@@ -37,4 +37,4 @@ Media Attachment Unit type: 16
 
 - Source is portable in intent; binaries remain architecture/ABI-specific.
 - PHY information is omitted if the driver does not support `ETHTOOL_GSET`.
-- Some legacy drivers may report unusual capability bits; the utility relays them instead of guessing.
+- The historical unusual 100BASE-T2 capability requires a fresh packet capture; the current encoder does not set that bit.
