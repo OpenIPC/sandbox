@@ -1,0 +1,6 @@
+config BR2_PACKAGE_OPENIPC_LLDP
+	bool "openipc-lldp"
+	help
+	  Tiny LLDP advertiser for OpenIPC cameras.
+	  Advertises hostname, firmware/platform information,
+	  management IPv4 address and Ethernet PHY capabilities.
